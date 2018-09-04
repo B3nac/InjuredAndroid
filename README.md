@@ -8,7 +8,7 @@ A vulnerable Android application with ctf examples. I hope to add a flag that ex
 
 2. Connect your phone and your pc with a usb cable.
 
-3. Install via adb. `adb install InjuredAndroid.apk` .
+3. Install via adb. `adb install InjuredAndroid.apk`.
 
 Or
 
