@@ -19,13 +19,17 @@
         <activity android:name=".XSSTextActivity" />
         <activity android:name=".DisplayPostXSS" />
         <activity
-            android:name=".BypassMainActivity"
-            android:label="@string/title_activity_bypass_main"
+            android:name=".FlagOneLoginActivity"
+            android:label="FlagOneLoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".FlagOneSuccess" />
-        <activity android:name=".b25lActivity"
-                  android:exported="true">
-        </activity>
+        <activity
+            android:name=".b25lActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".FlagTwoActivity"
+            android:label="@string/title_activity_flag_two"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

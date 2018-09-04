@@ -18,8 +18,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToBypassMainActivity(View view) {
-        Intent intent = new Intent(this, BypassMainActivity.class);
+    public void goToFlagOneLogin(View view) {
+        Intent intent = new Intent(this, FlagOneLoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToFlagTwoBypass(View view) {
+        Intent intent = new Intent(this, FlagTwoActivity.class);
         startActivity(intent);
     }
 }
