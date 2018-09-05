@@ -42,7 +42,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:onClick="goToFlagTwoBypass"
-        android:text="Flag Two Bypass"
+        android:text="Flag Two Exported"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
