@@ -25,10 +25,14 @@
         <activity android:name=".FlagOneSuccess" />
         <activity
             android:name=".b25lActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".FlagTwoActivity"
             android:label="@string/title_activity_flag_two"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FlagThreeActivity"
+            android:label="@string/title_activity_flag_three"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
