@@ -33,6 +33,10 @@
         <activity
             android:name=".FlagThreeActivity"
             android:label="@string/title_activity_flag_three"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FlagFourActivity"
+            android:label="@string/title_activity_flag_four"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

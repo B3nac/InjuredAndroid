@@ -9,4 +9,5 @@
     <string name="title_activity_flag_two">FlagTwoActivity</string>
     <string name="submit_flag_text">Input the flag and push submit.</string>
     <string name="title_activity_flag_three">FlagThreeActivity</string>
+    <string name="title_activity_flag_four">FlagFourActivity</string>
 </resources>
