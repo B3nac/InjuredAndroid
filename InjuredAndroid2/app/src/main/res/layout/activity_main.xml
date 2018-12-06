@@ -27,13 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToFlagOneLogin"
-        android:text="Flag One Login"
+        android:text="Flag one Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.119" />
 
     <Button
         android:id="@+id/button2"
@@ -42,13 +42,12 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:onClick="goToFlagTwoBypass"
-        android:text="Flag Two Exported"
+        android:text="Flag Two - Exported"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <Button
         android:id="@+id/button7"
@@ -56,12 +55,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="Flag Three"
+        android:onClick="goToFlagThreeResources"
+        android:text="Flag Three - Resources"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.217" />
 
     <Button
         android:id="@+id/button6"
@@ -71,7 +72,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="FLAG FOUR"
+        android:onClick="goToFlagFourLogin"
+        android:text="Flag four - Login 2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

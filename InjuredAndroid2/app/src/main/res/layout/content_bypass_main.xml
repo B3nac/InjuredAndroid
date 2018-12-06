@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="b3nac.injuredandroid.BypassMainActivity"
-    tools:showIn="@layout/activity_bypass_main">
+    tools:context="b3nac.injuredandroid.FlagOneLoginActivity"
+    tools:showIn="@layout/content_bypass_main">
 
     <TextView
         android:id="@+id/textView3"
@@ -57,4 +57,7 @@
         app:layout_constraintStart_toEndOf="@+id/editText2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.083" />
+
 </android.support.constraint.ConstraintLayout>
+
+

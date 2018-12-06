@@ -5,7 +5,7 @@
     <string name="title_activity_bypass_main">BypassMainActivity</string>
     <string name="activity_bypass_info">There is a way to bypass the main activity and invoke other activities that are exported.</string>
     <string name="input_flag">Enter flag</string>
-    <string name="flag_one">F1ag 0n3</string>
+    <string name="cmVzb3VyY2VzX3lv">F1ag_thr33</string>
     <string name="title_activity_flag_two">FlagTwoActivity</string>
     <string name="submit_flag_text">Input the flag and push submit.</string>
     <string name="title_activity_flag_three">FlagThreeActivity</string>

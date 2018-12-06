@@ -27,4 +27,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FlagTwoActivity.class);
         startActivity(intent);
     }
+
+    public void goToFlagThreeResources(View view) {
+        Intent intent = new Intent(this, FlagThreeActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToFlagFourLogin(View view) {
+        Intent intent = new Intent(this, FlagFourActivity.class);
+        startActivity(intent);
+    }
 }
