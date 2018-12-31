@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void goToXSSText(View view) {
@@ -35,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToFlagFourLogin(View view) {
         Intent intent = new Intent(this, FlagFourActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToFlagFiveReceiver(View view) {
+
+        Intent intent = new Intent(this, TestBroadcastReceiver.class);
         startActivity(intent);
     }
 }

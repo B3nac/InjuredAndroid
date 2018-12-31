@@ -10,4 +10,11 @@
     <string name="submit_flag_text">Input the flag and push submit.</string>
     <string name="title_activity_flag_three">FlagThreeActivity</string>
     <string name="title_activity_flag_four">FlagFourActivity</string>
+    <string name="FlagOneText">Flag One - Login</string>
+    <string name="FlagTwoText">Flag Two - Exported Activity</string>
+    <string name="FlagThreeText">Flag Three - Resources</string>
+    <string name="FlagFourText">Flag Four - Login 2</string>
+    <string name="title_activity_flag_five">FlagFiveActivity</string>
+    <string name="title_activity_flag_five_receiver">FlagFiveReceiver</string>
+    <string name="title_activity_test_broadcast_reciever">TestBroadcastReciever</string>
 </resources>

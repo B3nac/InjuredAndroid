@@ -37,6 +37,20 @@
         <activity
             android:name=".FlagFourActivity"
             android:label="@string/title_activity_flag_four"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name=".FlagFiveReceiver"
+            android:exported="true"></receiver>
+
+        <activity
+            android:name=".FlagFiveActivity"
+            android:label="@string/title_activity_flag_five"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TestBroadcastReceiver"
+            android:exported="true"
+            android:label="@string/title_activity_test_broadcast_reciever"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
