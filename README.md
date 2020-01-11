@@ -4,11 +4,13 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 
 ### Setup for a physical device
 
-1. Enable debugging on your test phone.
+1. Download injuredandroid.apk from Github
+
+1. Enable USB debugging on your Android test phone.
 
 2. Connect your phone and your pc with a usb cable.
 
-3. Install via adb. `adb install InjuredAndroid.apk`.
+3. Install via adb. `adb install injuredandroid.apk`.
 
 ### Setup for an Android Emulator using Android Studio
 
@@ -16,7 +18,7 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 
 2. Start the emulator from Android Studio (I recommend downloading an emulator with Google APIs so root adb can be enabled).
 
-3. Drag and drop the .apk file on the emulator and the install will start.
+3. Drag and drop the .apk file on the emulator and injuredandroid.apk will install.
 
 ### Tips and CTF Overview
 
@@ -29,4 +31,8 @@ Decompiling the Android app is highly recommended.
  - The flags without a submit that demonstrate concepts will automatically register in the "Flags Overview" Activity.
 
  - There is one flag with a Pentesterlab 1 month gift key. The key is stored in a self destructing note after It's read, do not close the browser tab before copying the url.
+
+ - The exclamatory buttons on the bottom right will give users up to three tips for each flag.
+
+ Good luck and have fun! :D
 
