@@ -1,6 +1,6 @@
 # InjuredAndroid - CTF
 
-A vulnerable Android application with ctf examples based on bug bounty findings, exploitation concepts, or pure creativity. 
+A vulnerable Android application with ctf examples based on bug bounty findings, exploitation concepts, and pure creativity. 
 
 ### Setup for a physical device
 
@@ -10,7 +10,7 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 
 2. Connect your phone and your pc with a usb cable.
 
-3. Install via adb. `adb install injuredandroid.apk`.
+3. Install via adb. `adb install injuredandroid.apk`. Note: You need to use the absolute path to the .apk file or be in the same directory.
 
 ### Setup for an Android Emulator using Android Studio
 
