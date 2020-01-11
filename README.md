@@ -30,6 +30,8 @@ Decompiling the Android app is highly recommended.
 
  - The flags without a submit that demonstrate concepts will automatically register in the "Flags Overview" Activity.
 
+ - The last two flags don't register because there currently isn't a remote verification method (I plan to change this in a future update). This was done to prevent using previous flag methods to skip the exploitation techniques.
+
  - There is one flag with a Pentesterlab 1 month gift key. The key is stored in a self destructing note after It's read, do not close the browser tab before copying the url.
 
  - The exclamatory buttons on the bottom right will give users up to three tips for each flag.
