@@ -1,6 +1,10 @@
 # InjuredAndroid - CTF
 
+<<<<<<< HEAD
+A vulnerable Android application with ctf examples based on bug bounty findings, exploitation concepts, and pure creativity.
+=======
 A vulnerable Android application with ctf examples based on bug bounty findings, exploitation concepts, and pure creativity. 
+>>>>>>> 81d562ad012f14d9005c8d1c87d038bd9096c130
 
 ### Setup for a physical device
 
@@ -18,7 +22,11 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 
 2. Start the emulator from Android Studio (I recommend downloading an emulator with Google APIs so root adb can be enabled).
 
+<<<<<<< HEAD
+3. Drag and drop the .apk file on the emulator and InjuredAndroid.apk will install.
+=======
 3. Drag and drop the .apk file on the emulator and injuredandroid.apk will install.
+>>>>>>> 81d562ad012f14d9005c8d1c87d038bd9096c130
 
 ### Tips and CTF Overview
 
@@ -30,9 +38,15 @@ Decompiling the Android app is highly recommended.
 
  - The flags without a submit that demonstrate concepts will automatically register in the "Flags Overview" Activity.
 
+<<<<<<< HEAD
+ - The exclamatory buttons on the bottom right will give users up to three tips for each flag.
+
+ Good luck and have fun! :D
+=======
  - The last two flags don't register because there currently isn't a remote verification method (I plan to change this in a future update). This was done to prevent using previous flag methods to skip the exploitation techniques.
 
  - There is one flag with a Pentesterlab 1 month gift key. The key is stored in a self destructing note after It's read, do not close the browser tab before copying the url.
+>>>>>>> 81d562ad012f14d9005c8d1c87d038bd9096c130
 
  - The exclamatory buttons on the bottom right will give users up to three tips for each flag.
 
