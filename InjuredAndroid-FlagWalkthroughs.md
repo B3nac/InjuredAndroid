@@ -236,7 +236,7 @@ Base64 decode the directory value: `final String directory = "ZmxhZ3Mv";`
 
 Which gives you: flags/ making the endpoint flags.json 
 
-Encode the flag at in response of `https://injuredandroid.firebaseio.com/flags.json` to score: W25pbmUhX2ZsYWdd
+Base64 encode the flag from the response of `https://injuredandroid.firebaseio.com/flags.json` to score: W25pbmUhX2ZsYWdd
 
 ---
 
