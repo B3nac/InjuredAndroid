@@ -284,9 +284,9 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
 1. Research "Github dotless i". 
 
-toUpperCase works in Kotlin as well as Java for the unicode collision. 
+The method toUpperCase works in Kotlin as well as Java for the unicode collision. 
 
-```
+```kotlin
 val value = dataSnapshot.value as String?
                         when {
                             post == value -> Toast.makeText(this@FlagTenUnicodeActivity, "No cheating. :]",
