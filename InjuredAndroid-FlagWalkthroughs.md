@@ -297,7 +297,7 @@ Binary location is: `res/values/meŉu`
 
 ---
 
-### Flag 12 - Flag complete after using an PoC apk
+### Flag 12 - Flag complete after using a PoC apk
 
 Complete the exploit by using a PoC app, an example from my Youtube video.
 
