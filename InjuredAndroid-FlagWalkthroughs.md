@@ -2,7 +2,7 @@
 
 ### Flag 1 - F1ag_0n3
 
-Review source code and find the comparison string.
+1. Review source code and find the comparison string.
 
 ```java
 if (post.equals("F1ag_0n3")) {
@@ -14,13 +14,13 @@ if (post.equals("F1ag_0n3")) {
         }
 ```
 
-Submit the comparison string to score.
+2. Submit the comparison string to score.
 
 ---
 
 ### Flag 2 - S3cond_F1ag
 
-Invoke exported activity with adb or PoC app. (PoC app will help with later exercises)
+1. Invoke exported activity with adb or PoC app. (PoC app will help with later exercises)
 
 ```bash
 adb shell am start -n b3nac.injuredandroid/.b25lActivity
@@ -50,11 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
+This flag is intended to introduce how starting exported activities work.
+
 ---
 
 ### Flag 3 - F1ag_thr33
 
-Source code review based exercise. Trace resource reference to strings.xml.
+1. Source code review based exercise. Trace resource reference to strings.xml.
 
 ```java
 
@@ -68,15 +70,17 @@ if (post.equals(getString(R.string.cmVzb3VyY2VzX3lv))) {
 
 ```
 
-In strings.xml search for R.string.cmVzb3VyY2VzX3lv and submit the value as the flag.
+2. In strings.xml search for R.string.cmVzb3VyY2VzX3lv. 
 
 `<string name="cmVzb3VyY2VzX3lv">F1ag_thr33</string>`
+
+3. Submit the value as the flag.
 
 ---
 
 ### Flag 4 - 4_overdone_omelets
 
-Find where the bob variable is called from.
+1. Find where the bob variable is located.
 
 ```java
 
@@ -92,7 +96,7 @@ if (post.equals(bob)) {
 
 ```
 
-Search the Decoder class for the base64 string and decode it or hook the method with frida.
+2. Search the Decoder class for the base64 string and decode it or hook the method with frida.
 
 ```java
 
@@ -106,11 +110,15 @@ public class Decoder {
 
 ```
 
+3. Submit the Base64 decoded value.
+
 ---
 
 ### Flag 5 - {F1V3!}
 
-Iterate the broadcast by revisiting activity. After visiting the FlagFiveActivity three times the flag will be broadcasted.
+1. Iterate the broadcast by revisiting activity. 
+
+2. After visiting the FlagFiveActivity three times the flag will be broadcasted.
 
 
 ```java
@@ -148,7 +156,7 @@ if (wtf == 0) {
 
 ### Flag 6 - {This_Isn't_Where_I_Parked_My_Car}
 
-Use frida to hook the decryption method for the flag.
+1. Use frida to hook the decryption method for the flag.
 
 Python file "test.py" for Frida:
 
@@ -208,11 +216,11 @@ Java.perform(function x() {
 
 ### Flag 7 - S3V3N_11
 
-Find the flag password in the sqlite database and the flag url in the Hide class. Enter both into the form for completion.  
+1. Find the flag password in the sqlite database.  
 
-Flag password first found as a MD5 hash `2ab96390c7dbe3439de74d0c9b0b1767` crack this value to get `hunter2`.
+2. Flag password first found as a MD5 hash `2ab96390c7dbe3439de74d0c9b0b1767` crack this value to get `hunter2`.
 
-The flag url is in the Hide class rot47 encoded: https://injuredandroid.firebaseio.com/sqlite.json 
+3. The flag url is in the Hide class rot47 encoded: https://injuredandroid.firebaseio.com/sqlite.json 
 
 ```java
 
@@ -220,13 +228,15 @@ private static String remoteUrl = "9EEADi^^:?;FC652?5C@:5]7:C632D6:@]4@>^DB=:E6]
 
 ```
 
+3. Enter both into the form for completion.
+
 ---
 
 ### Flag 8 - C10ud_S3cur1ty_lol
 
-Find the AWS bucket information in strings.xml and use disclosed aws id and aws secret to access s3 bucket with awscli.
+1. Find the AWS bucket information in strings.xml and use disclosed aws id and aws secret to access s3 bucket with awscli.
 
-Create AWS profile in `~/.aws/credentials`:
+2. Create AWS profile in `~/.aws/credentials`:
 
 ```bash
 
@@ -237,7 +247,7 @@ aws_secret_access_key = lookinstrings.xmlnotputtingitheresoawsdoesn'talert
 
 ```
 
-Then use this command:
+3. Use this awscli command to capture the flag.
 
 ```bash
 
@@ -249,7 +259,7 @@ aws s3 ls s3://injuredandroid --profile injuredandroid
 
 ### Flag 9 - [nine!_flag]
 
-Find the flag by navigating to the firebase endpoint: `https://injuredandroid.firebaseio.com/flags.json`
+1. Find the flag by navigating to the firebase endpoint: `https://injuredandroid.firebaseio.com/flags.json`
 
 ```java
 
@@ -262,44 +272,44 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
 ```
 
-Base64 decode the directory value: `final String directory = "ZmxhZ3Mv";`
+2. Base64 decode the directory value: `final String directory = "ZmxhZ3Mv";`
 
-Which gives you `flags/` which correlates to the endpoint being `flags.json` 
+3. Which gives you `flags/` which correlates to the endpoint being `flags.json` 
 
-Base64 encode the flag from the response of `https://injuredandroid.firebaseio.com/flags.json` to score: W25pbmUhX2ZsYWdd
+4. Base64 encode the flag from the response of `https://injuredandroid.firebaseio.com/flags.json` to score: W25pbmUhX2ZsYWdd
 
 ---
 
 ### Flag 10 - John@Gıthub.com
 
-- Research "Github dotless i". 
+1. Research "Github dotless i". 
 
-- Authenticate using the b3nac.injuredandroid.QXV0aA activity by using an adb command to invoke the activity.
+2. Authenticate using the b3nac.injuredandroid.QXV0aA activity by using an adb command to invoke the activity.
 
 ```bash
 adb shell am start -n b3nac.injuredandroid/.QXV0aA
 
 ```
 
-- Input email with dotless i after authenticating.
+3. Input email with dotless i after authenticating.
 
 ---
 
 ### Flag 11 - HIIMASTRING
 
-- First invoke the activity with a deep link so you can access the post form. 
+1. First invoke the activity with a deep link so you can access the post form. 
 
 `adb shell am start -W -a android.intent.action.VIEW -d "flag11://"`
 
-- Secondly find the binary in the apk and run strings on the golang binary or run the binary and the Golang binary will print the flag. 
+2. Secondly find the binary in the apk and run strings on the golang binary or run the binary and the Golang binary will print the flag. 
 
-Binary location is: `res/values/meŉu`
+3. Binary location is: `res/values/meŉu`
 
 ---
 
 ### Flag 12 - Flag complete after using a PoC apk
 
-Complete the exploit by using a PoC app, an example from my Youtube video.
+1. Complete the exploit by using a PoC app, an example from my Youtube video.
 
 ```java
 
