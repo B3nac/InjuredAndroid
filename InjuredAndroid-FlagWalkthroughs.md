@@ -176,13 +176,11 @@ Java.perform(function x() {
 
 ### Flag 7 - S3V3N_11
 
-Find password in sqlite database and flag url is in the Hide class. Enter both into the form for completion.  
+Find the flag password in the sqlite database and the flag url in the Hide class. Enter both into the form for completion.  
 
 Flag password is a MD5 hash: 2ab96390c7dbe3439de74d0c9b0b1767
 
-Decrypted: hunter2
-
-``
+Cracked hash: hunter2
 
 Flag url is in the Hide class rot47 encoded: https://injuredandroid.firebaseio.com/sqlite.json 
 
