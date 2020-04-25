@@ -284,6 +284,22 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
 1. Research "Github dotless i". 
 
+toUpperCase works in Kotlin as well as Java for the unicode collision. 
+
+```
+val value = dataSnapshot.value as String?
+                        when {
+                            post == value -> Toast.makeText(this@FlagTenUnicodeActivity, "No cheating. :]",
+                                    Toast.LENGTH_SHORT).show()
+                            post.toUpperCase(Locale.ROOT) == value!!.toUpperCase(Locale.ROOT) -> correctFlag()
+                            else -> Toast.makeText(this@FlagTenUnicodeActivity, "Try again! :D",
+                                    Toast.LENGTH_SHORT).show()
+                        }
+
+```
+
+From the exercise code above we can see that `post.toUpperCase(Locale.ROOT) == value!!.toUpperCase(Locale.ROOT) -> correctFlag()` is onverting the dotless ı to a normal i.
+
 2. Authenticate using the b3nac.injuredandroid.QXV0aA activity by using an adb command to invoke the activity.
 
 ```bash
@@ -291,7 +307,7 @@ adb shell am start -n b3nac.injuredandroid/.QXV0aA
 
 ```
 
-3. Input email with dotless i after authenticating.
+3. Submit email with dotless i after authenticating.
 
 ---
 
