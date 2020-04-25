@@ -228,7 +228,7 @@ private static String remoteUrl = "9EEADi^^:?;FC652?5C@:5]7:C632D6:@]4@>^DB=:E6]
 
 ```
 
-3. Enter both into the form for completion.
+3. Enter both into the submit flag form for completion.
 
 ---
 
@@ -298,7 +298,7 @@ val value = dataSnapshot.value as String?
 
 ```
 
-From the exercise code above we can see that `post.toUpperCase(Locale.ROOT) == value!!.toUpperCase(Locale.ROOT) -> correctFlag()` is onverting the dotless ı to a normal i.
+From the exercise code above we can see that `post.toUpperCase(Locale.ROOT) == value!!.toUpperCase(Locale.ROOT) -> correctFlag()` is converting the dotless ı to a normal i.
 
 2. Authenticate using the `b3nac.injuredandroid.QXV0aA` activity by using an adb command to start the activity.
 
