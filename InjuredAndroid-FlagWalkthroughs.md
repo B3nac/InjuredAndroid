@@ -1,4 +1,4 @@
-## InjuredAndroid Walk-throughs
+## InjuredAndroid walk-throughs
 
 ### Flag 1 - F1ag_0n3
 
