@@ -276,7 +276,7 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
 3. Which gives you `flags/` which correlates to the endpoint being `flags.json` 
 
-4. Base64 encode the flag from the response of `https://injuredandroid.firebaseio.com/flags.json` to score: W25pbmUhX2ZsYWdd
+4. Base64 encode the flag from the response of `https://injuredandroid.firebaseio.com/flags.json` to score: `W25pbmUhX2ZsYWdd`
 
 ---
 
@@ -300,7 +300,7 @@ val value = dataSnapshot.value as String?
 
 From the exercise code above we can see that `post.toUpperCase(Locale.ROOT) == value!!.toUpperCase(Locale.ROOT) -> correctFlag()` is onverting the dotless ı to a normal i.
 
-2. Authenticate using the b3nac.injuredandroid.QXV0aA activity by using an adb command to invoke the activity.
+2. Authenticate using the `b3nac.injuredandroid.QXV0aA` activity by using an adb command to start the activity.
 
 ```bash
 adb shell am start -n b3nac.injuredandroid/.QXV0aA
