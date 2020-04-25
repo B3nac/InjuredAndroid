@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 ### Flag 3 - F1ag_thr33
 
-Source code review. Trace reference to strings.xml.
+Source code review based exercise. Trace resource reference to strings.xml.
 
 ```java
 
@@ -110,13 +110,45 @@ public class Decoder {
 
 ### Flag 5 - {F1V3!}
 
-Iterate the broadcast by revisiting activity.
+Iterate the broadcast by revisiting activity. After visiting the FlagFiveActivity three times the flag will be broadcasted.
+
+
+```java
+
+if (wtf == 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Action: " + intent.getAction() + "\n");
+            sb.append("URI: " + intent.toUri(Intent.URI_INTENT_SCHEME) + "\n");
+            String log = sb.toString();
+            Log.d("DUDE!:", log);
+            Toast.makeText(context, log, Toast.LENGTH_LONG).show();
+            wtf = wtf + 1;
+        }
+        else if (wtf == 1) {
+            String win = "Keep trying!";
+            Toast.makeText(context, win, Toast.LENGTH_LONG).show();
+            wtf = wtf + 1;
+        }
+        else if (wtf == 2) {
+
+            String win = "You are a winner " + VGV4dEVuY3J5cHRpb25Ud28.decrypt("Zkdlt0WwtLQ=");
+            FlagsOverview.flagFiveButtonColor = true;
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("flagFiveButtonColor", true).commit();
+            Toast.makeText(context, win, Toast.LENGTH_LONG).show();
+            
+        }else{
+            String win = "Keep trying!";
+            Toast.makeText(context, win, Toast.LENGTH_LONG).show();
+        }
+
+```
 
 ---
 
 ### Flag 6 - {This_Isn't_Where_I_Parked_My_Car}
 
-Use frida to hook decryption method for flag.
+Use frida to hook the decryption method for the flag.
 
 Python file "test.py" for Frida:
 
@@ -178,11 +210,9 @@ Java.perform(function x() {
 
 Find the flag password in the sqlite database and the flag url in the Hide class. Enter both into the form for completion.  
 
-Flag password is a MD5 hash: 2ab96390c7dbe3439de74d0c9b0b1767
+Flag password first found as a MD5 hash `2ab96390c7dbe3439de74d0c9b0b1767` crack this value to get `hunter2`.
 
-Cracked hash: hunter2
-
-Flag url is in the Hide class rot47 encoded: https://injuredandroid.firebaseio.com/sqlite.json 
+The flag url is in the Hide class rot47 encoded: https://injuredandroid.firebaseio.com/sqlite.json 
 
 ```java
 
@@ -234,7 +264,7 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
 Base64 decode the directory value: `final String directory = "ZmxhZ3Mv";`
 
-Which gives you: flags/ making the endpoint flags.json 
+Which gives you `flags/` which correlates to the endpoint being `flags.json` 
 
 Base64 encode the flag from the response of `https://injuredandroid.firebaseio.com/flags.json` to score: W25pbmUhX2ZsYWdd
 
@@ -242,30 +272,34 @@ Base64 encode the flag from the response of `https://injuredandroid.firebaseio.c
 
 ### Flag 10 - John@Gıthub.com
 
-Google recon "Github dotless i". Authenticate with exported activity. Input email with dotless i after authenticating.
+- Research "Github dotless i". 
 
-Authenticate using the b3nac.injuredandroid.QXV0aA activity by using an adb command to invoke the activity.
+- Authenticate using the b3nac.injuredandroid.QXV0aA activity by using an adb command to invoke the activity.
 
 ```bash
 adb shell am start -n b3nac.injuredandroid/.QXV0aA
 
 ```
 
+- Input email with dotless i after authenticating.
+
 ---
 
 ### Flag 11 - HIIMASTRING
 
-First invoke the activity with a deep link so you can access the post form. Secondly find the binary in the apk and run strings on the golang binary or run the binary and it will print the flag. 
+- First invoke the activity with a deep link so you can access the post form. 
 
 `adb shell am start -W -a android.intent.action.VIEW -d "flag11://"`
+
+- Secondly find the binary in the apk and run strings on the golang binary or run the binary and the Golang binary will print the flag. 
 
 Binary location is: `res/values/meŉu`
 
 ---
 
-### Flag 12 - No flag just complete the exploit
+### Flag 12 - Flag complete after using an PoC apk
 
-Complete the exploit by using a PoC app, link in my Youtube video.
+Complete the exploit by using a PoC app, an example from my Youtube video.
 
 ```java
 
