@@ -6,11 +6,11 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 
 1. Download injuredandroid.apk from Github
 
-1. Enable USB debugging on your Android test phone.
+2. Enable USB debugging on your Android test phone.
 
-2. Connect your phone and your pc with a usb cable.
+3. Connect your phone and your pc with a usb cable.
 
-3. Install via adb. `adb install InjuredAndroid.apk`. Note: You need to use the absolute path to the .apk file or be in the same directory.
+4. Install via adb. `adb install InjuredAndroid.apk`. Note: You need to use the absolute path to the .apk file or be in the same directory.
 
 ### Setup for an Android Emulator using Android Studio
 
