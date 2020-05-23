@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "430943006316",
+    "firebase_url": "https://injuredandroid.firebaseio.com",
+    "project_id": "injuredandroid",
+    "storage_bucket": "injuredandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430943006316:android:d97db57e11e42a1a037249",
+        "android_client_info": {
+          "package_name": "b3nac.injuredandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430943006316-85ibmlobpn5p6c14b2keslrh5r6kgsn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUImEIOSvqAswLqFak75xhskkB6illd7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430943006316-85ibmlobpn5p6c14b2keslrh5r6kgsn4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
