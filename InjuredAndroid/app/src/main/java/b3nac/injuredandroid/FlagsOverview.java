@@ -27,6 +27,7 @@ public class FlagsOverview extends AppCompatActivity {
     public static boolean flagElevenButtonColor;
     public static boolean flagTwelveButtonColor;
     public static boolean flagThirteenButtonColor;
+    public static boolean flagFourteenButtonColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,8 @@ public class FlagsOverview extends AppCompatActivity {
         flagTwelveButton = findViewById(R.id.button22);
         Button flagThirteenButton;
         flagThirteenButton = findViewById(R.id.button37);
+        Button flagFourteenButton;
+        flagFourteenButton = findViewById(R.id.button38);
 
         //Start of flag one
         if (settings.getBoolean("flagOneButtonColor", false)) {
@@ -263,6 +266,27 @@ public class FlagsOverview extends AppCompatActivity {
 
         if (!flagThirteenButtonColor) {
             flagThirteenButton.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+        }
+        //Start of flag fourteen
+        SharedPreferences flutterprefs = getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE);
+
+        String value = flutterprefs.getString("flutter.flagFourteenButtonColor", "");
+
+        if (value.equals("Flag fourteen found!")) {
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("flagFourteenButtonColor", true).apply();
+            flagFourteenButtonColor = true;
+            flagFourteenButton.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+        }
+
+        if (settings.getBoolean("flagFourteenButtonColor", true)) {
+            flagFourteenButtonColor = flutterprefs.getBoolean("flagFourteenButtonColor", false);
+            flagFourteenButton.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+        }
+
+        if (!value.equals("Flag fourteen found!")) {
+            flagFourteenButton.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
         }
     }
 

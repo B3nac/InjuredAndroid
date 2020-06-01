@@ -31,9 +31,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clearFlags(View view) {
         SharedPreferences settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE);
+        SharedPreferences flutterprefs = getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
+        SharedPreferences.Editor fluttereditor = flutterprefs.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
+        fluttereditor.clear();
+        fluttereditor.apply();
     }
 
 }

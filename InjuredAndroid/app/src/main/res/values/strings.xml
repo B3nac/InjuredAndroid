@@ -68,4 +68,6 @@
     <string name="rceview">RCEView</string>
     <string name="flag_thirteen_rce">Flag Thirteen - RCE</string>
     <string name="flag_13">Flag 13</string>
+    <string name="flag_fourteen_flutter_xss">Flag fourteen - Flutter XSS</string>
+    <string name="flag_14">Flag 14</string>
 </resources>

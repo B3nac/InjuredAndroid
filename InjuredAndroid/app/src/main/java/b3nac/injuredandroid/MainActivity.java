@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import io.flutter.embedding.android.FlutterActivity;
+
 public class MainActivity extends AppCompatActivity {
     /* access modifiers changed from: protected */
     int click = 0;
@@ -91,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToFlagThirteenActivity(View view) {
         startActivity(new Intent(this, RCEActivity.class));
+    }
+
+    public void goToFlagFourteenActivity(View view) {
+        startActivity(
+                FlutterActivity
+                        .withNewEngine()
+                        .initialRoute("splashRoute")
+                        .build(this)
+        );
     }
 
     public void goToFlagFlagsOverview(View view) {
