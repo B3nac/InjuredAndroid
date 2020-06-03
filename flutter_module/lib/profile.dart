@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+const PrimaryColor = const Color(0xFF008577);
+
 class ProfilePage extends StatefulWidget {
   @override
   MapScreenState createState() => MapScreenState();
@@ -13,15 +15,22 @@ class MapScreenState extends State<ProfilePage>
   bool _status = true;
   final FocusNode myFocusNode = FocusNode();
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  SharedPreferences sharedPrefs;
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() => sharedPrefs = prefs);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    String f = runMyFuture(sharedPrefs.getString('username'));
+
     return new Scaffold(
         body: new Container(
           color: Colors.white,
@@ -46,7 +55,7 @@ class MapScreenState extends State<ProfilePage>
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 25.0),
-                                  child: new Text('PROFILE',
+                                  child: new Text('User Profile',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20.0,
@@ -81,7 +90,7 @@ class MapScreenState extends State<ProfilePage>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     new CircleAvatar(
-                                      backgroundColor: Colors.red,
+                                      backgroundColor: PrimaryColor,
                                       radius: 25.0,
                                       child: new Icon(
                                         Icons.camera_alt,
@@ -115,7 +124,7 @@ class MapScreenState extends State<ProfilePage>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Personal Information for user ' + runMyFuture(),
+                                        'Personal Information for user ' + f,
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold),
@@ -180,7 +189,7 @@ class MapScreenState extends State<ProfilePage>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Email ID',
+                                        'Email',
                                         style: TextStyle(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.bold),
@@ -198,7 +207,7 @@ class MapScreenState extends State<ProfilePage>
                                   new Flexible(
                                     child: new TextField(
                                       decoration: const InputDecoration(
-                                          hintText: "Enter Email ID"),
+                                          hintText: "Enter Email"),
                                       enabled: !_status,
                                     ),
                                   ),
@@ -230,13 +239,6 @@ class MapScreenState extends State<ProfilePage>
                               child: new Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Flexible(
-                                    child: new TextField(
-                                      decoration: const InputDecoration(
-                                          hintText: "Enter Mobile Number"),
-                                      enabled: !_status,
-                                    ),
-                                  ),
                                 ],
                               )),
                           Padding(
@@ -246,28 +248,6 @@ class MapScreenState extends State<ProfilePage>
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      child: new Text(
-                                        'Pin Code',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    flex: 2,
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      child: new Text(
-                                        'State',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    flex: 2,
-                                  ),
                                 ],
                               )),
                           Padding(
@@ -277,25 +257,6 @@ class MapScreenState extends State<ProfilePage>
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Flexible(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(right: 10.0),
-                                      child: new TextField(
-                                        decoration: const InputDecoration(
-                                            hintText: "Enter Pin Code"),
-                                        enabled: !_status,
-                                      ),
-                                    ),
-                                    flex: 2,
-                                  ),
-                                  Flexible(
-                                    child: new TextField(
-                                      decoration: const InputDecoration(
-                                          hintText: "Enter State"),
-                                      enabled: !_status,
-                                    ),
-                                    flex: 2,
-                                  ),
                                 ],
                               )),
                           !_status ? _getActionButtons() : new Container(),
@@ -351,7 +312,7 @@ class MapScreenState extends State<ProfilePage>
                   child: new RaisedButton(
                     child: new Text("Cancel"),
                     textColor: Colors.white,
-                    color: Colors.red,
+                    color: PrimaryColor,
                     onPressed: () {
                       setState(() {
                         _status = true;
@@ -372,7 +333,7 @@ class MapScreenState extends State<ProfilePage>
   Widget _getEditIcon() {
     return new GestureDetector(
       child: new CircleAvatar(
-        backgroundColor: Colors.red,
+        backgroundColor: PrimaryColor,
         radius: 14.0,
         child: new Icon(
           Icons.edit,
@@ -394,11 +355,11 @@ class MapScreenState extends State<ProfilePage>
     String stringValue = prefs.getString('username');
     return stringValue;
   }
-  runMyFuture() {
+  String runMyFuture(String stringValue) {
     getStringValuesSF().then((stringValue) {
-      flutterWebviewPlugin.evalJavascript(stringValue);
-      return '$stringValue';
+      return flutterWebviewPlugin.evalJavascript(stringValue);
     });
+    return stringValue;
   }
 }
 
