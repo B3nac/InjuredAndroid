@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutterxssmodule/profile.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -23,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement initState
     super.initState();
     _onchanged = flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-      flutterWebviewPlugin.evalJavascript(widget.test);
+      //flutterWebviewPlugin.evalJavascript(widget.test);
       if (mounted) {
         if(state.type== WebViewState.finishLoad){ // if the full website page loaded
           print("loaded...");
@@ -107,7 +108,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   prefs.setString('flagFourteenButtonColor', "Flag fourteen found!");
                 }
                 storeFlagState();
-
+                flutterWebviewPlugin.hide();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(),
+                    ));
               },
             ),
 

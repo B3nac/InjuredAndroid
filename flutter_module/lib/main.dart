@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterxssmodule/run_javascript.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
@@ -70,6 +71,11 @@ class MyCustomFormState extends State<MyCustomForm> {
               if (username.isEmpty) {
                 return 'Please enter a username.';
               }
+              storeFlagState() async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('username', username);
+              }
+              storeFlagState();
               return null;
             },
           ),
