@@ -49,12 +49,43 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+
     return Form(
       key: _formKey,
+        child: Padding(
+        padding: EdgeInsets.only(
+        left: 25.0, right: 25.0, top: 2.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Flexible(
+            child: new Container(
+              padding: new EdgeInsets.only(right: 15.0),
+              child: new Text(
+                'Register a user',
+                overflow: TextOverflow.ellipsis,
+                style: new TextStyle(
+                  fontSize: 18.0,
+                  fontFamily: 'Roboto',
+                  color: new Color(0xFF212121),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+              padding: EdgeInsets.only(
+                  left: 25.0, right: 25.0, top: 25.0),
+              child: new Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                  ),
+                ],
+              )),
           TextFormField(
             decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
@@ -79,6 +110,18 @@ class MyCustomFormState extends State<MyCustomForm> {
               return null;
             },
           ),
+          Padding(
+              padding: EdgeInsets.only(
+                  left: 25.0, right: 25.0, top: 25.0),
+              child: new Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                  ),
+                ],
+              )),
           TextFormField(
             decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
@@ -98,7 +141,20 @@ class MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: EdgeInsets.only(
+                  left: 25.0, right: 25.0, top: 25.0),
+              child: new Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                  ),
+                ],
+              )),
+          Padding(
+            padding: EdgeInsets.only(
+                left: 25.0, right: 25.0, top: 2.0),
             child: RaisedButton(
               onPressed: () {
                 // Validate returns true if the form is valid, or false
@@ -119,6 +175,6 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

@@ -29,6 +29,7 @@ class MapScreenState extends State<ProfilePage>
 
   @override
   Widget build(BuildContext context) {
+
     String f = runMyFuture(sharedPrefs.getString('username'));
 
     return new Scaffold(
@@ -59,7 +60,6 @@ class MapScreenState extends State<ProfilePage>
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20.0,
-                                          fontFamily: 'sans-serif-light',
                                           color: Colors.black)),
                                 )
                               ],
@@ -84,21 +84,6 @@ class MapScreenState extends State<ProfilePage>
                                     )),
                               ],
                             ),
-                            Padding(
-                                padding: EdgeInsets.only(top: 90.0, right: 100.0),
-                                child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    new CircleAvatar(
-                                      backgroundColor: PrimaryColor,
-                                      radius: 25.0,
-                                      child: new Icon(
-                                        Icons.camera_alt,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                )),
                           ]),
                         )
                       ],
@@ -124,7 +109,7 @@ class MapScreenState extends State<ProfilePage>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Personal Information for user ' + f,
+                                        'Profile edit page for user ' + f,
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold),
@@ -169,6 +154,12 @@ class MapScreenState extends State<ProfilePage>
                                   new Flexible(
                                     child: new TextField(
                                       decoration: const InputDecoration(
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.greenAccent, width: 5.0),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: PrimaryColor, width: 5.0),
+                                        ),
                                         hintText: "Enter Your Name",
                                       ),
                                       enabled: !_status,
@@ -207,29 +198,15 @@ class MapScreenState extends State<ProfilePage>
                                   new Flexible(
                                     child: new TextField(
                                       decoration: const InputDecoration(
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.greenAccent, width: 5.0),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: PrimaryColor, width: 5.0),
+                                          ),
                                           hintText: "Enter Email"),
                                       enabled: !_status,
                                     ),
-                                  ),
-                                ],
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0, right: 25.0, top: 25.0),
-                              child: new Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: <Widget>[
-                                  new Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
-                                        'Mobile',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
                                   ),
                                 ],
                               )),
