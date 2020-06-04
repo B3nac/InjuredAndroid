@@ -54,8 +54,8 @@
     <string name="enter_password">Enter password</string>
     <string name="flag_12">flag 12</string>
     <string name="title_activity_exported_protected_intent">ExportedProtectedIntent</string>
-    <string name="AWS_ID">AKIAZ36DGKTUIOLDOBN6</string>
-    <string name="AWS_SECRET">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</string>
+    <string name="AWS_ID"></string>
+    <string name="AWS_SECRET"></string>
     <string name="flag_eleven_deep_links">flag eleven - Deep Links</string>
     <string name="flag_twelve_protected_components">flag twelve - Protected Components</string>
     <string name="clear_flags">clear flags</string>
