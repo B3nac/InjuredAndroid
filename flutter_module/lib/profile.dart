@@ -49,10 +49,11 @@ class MapScreenState extends State<ProfilePage>
                             child: new Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                new Icon(
-                                  Icons.arrow_back_ios,
-                                  color: Colors.black,
-                                  size: 22.0,
+                                InkWell(
+                                  child: Icon(Icons.arrow_back),
+                                  onTap: (){
+                                    Navigator.of(context).pop(); // for going back
+                                  },
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 25.0),
@@ -335,6 +336,7 @@ class MapScreenState extends State<ProfilePage>
   String runMyFuture(String stringValue) {
     getStringValuesSF().then((stringValue) {
       return flutterWebviewPlugin.evalJavascript(stringValue);
+
     });
     return stringValue;
   }

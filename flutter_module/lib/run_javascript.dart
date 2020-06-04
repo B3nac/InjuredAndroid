@@ -24,7 +24,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement initState
     super.initState();
     _onchanged = flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-      //flutterWebviewPlugin.evalJavascript(widget.test);
       if (mounted) {
         if(state.type== WebViewState.finishLoad){ // if the full website page loaded
           print("loaded...");
@@ -51,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         hidden: true , // put it true if you want to show CircularProgressIndicator while waiting for the page to load
 
         appBar: AppBar(
-          title: Text("Flutter"),
+          title: Text("Flutter XSS"),
           centerTitle: false,
           elevation: 1, // give the appbar shadows
           iconTheme: IconThemeData(color: Colors.white),
@@ -60,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Icon(Icons.refresh),
               onTap: (){
                 flutterWebviewPlugin.reload();
-                // flutterWebviewPlugin.reloadUrl(); // if you want to reloade another url
               },
             ),
 
@@ -102,10 +100,13 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               child: Icon(Icons.account_circle),
               onTap: (){
-                flutterWebviewPlugin.evalJavascript(widget.test); // for going forward
+              if (widget.test == "onclick=alert(1)") {
+                flutterWebviewPlugin.evalJavascript(widget.test);
                 storeFlagState() async {
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
-                  prefs.setString('flagFourteenButtonColor', "Flag fourteen found!");
+                  SharedPreferences prefs = await SharedPreferences
+                      .getInstance();
+                  prefs.setString(
+                      'flagFourteenButtonColor', "Flag fourteen found!");
                 }
                 storeFlagState();
                 flutterWebviewPlugin.hide();
@@ -114,21 +115,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(
                       builder: (context) => ProfilePage(),
                     ));
+              }
               },
             ),
 
           ],// make the icons colors inside appbar with white color
 
         ),
-
-
         initialChild: Container( // but if you want to add your own waiting widget just add InitialChild
           color: Colors.white,
           child: const Center(
             child: Text('waiting...'),
           ),)
-
-
     );
   }
 }
