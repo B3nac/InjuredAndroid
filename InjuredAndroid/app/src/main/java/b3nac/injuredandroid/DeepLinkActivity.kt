@@ -61,7 +61,7 @@ class DeepLinkActivity : AppCompatActivity() {
         }
     }
 
-    fun submitFlag(view: View?) {
+    fun submitFlag(@Suppress("UNUSED_PARAMETER")view: View?) {
         val editText5 = findViewById<EditText>(R.id.editText5)
         val post = editText5.text.toString()
         signInAnonymously()
@@ -70,11 +70,10 @@ class DeepLinkActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val value = dataSnapshot.value as String?
                 val settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE)
-                Log.e(TAG, value)
                 if (post == value) {
                     FlagsOverview.flagElevenButtonColor = true
                     val editor: SharedPreferences.Editor = settings.edit()
-                    editor.putBoolean("flagElevenButtonColor", true).commit()
+                    editor.putBoolean("flagElevenButtonColor", true).apply()
                     correctFlag()
                 } else {
                     Toast.makeText(this@DeepLinkActivity, "Try again! :D",

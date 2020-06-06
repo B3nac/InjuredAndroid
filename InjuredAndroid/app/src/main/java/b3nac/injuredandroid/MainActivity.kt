@@ -17,63 +17,63 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun goToXSSText(view: View?) {
+    fun goToXSSText(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, XSSTextActivity::class.java))
     }
 
-    fun goToFlagOneLogin(view: View?) {
+    fun goToFlagOneLogin(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagOneLoginActivity::class.java))
     }
 
-    fun goToFlagTwoBypass(view: View?) {
+    fun goToFlagTwoBypass(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagTwoActivity::class.java))
     }
 
-    fun goToFlagThreeResources(view: View?) {
+    fun goToFlagThreeResources(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagThreeActivity::class.java))
     }
 
-    fun goToFlagFourLogin(view: View?) {
+    fun goToFlagFourLogin(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagFourActivity::class.java))
     }
 
-    fun goToFlagFiveReceiver(view: View?) {
+    fun goToFlagFiveReceiver(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, TestBroadcastReceiver::class.java))
     }
 
-    fun goToFlagSixLoginActivity(view: View?) {
+    fun goToFlagSixLoginActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagSixLoginActivity::class.java))
     }
 
-    fun goToFlagSevenSqliteActivity(view: View?) {
+    fun goToFlagSevenSqliteActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         //if (FlagsOverview.flagOneButtonColor && FlagsOverview.flagTwoButtonColor && FlagsOverview.flagThreeButtonColor && FlagsOverview.flagFourButtonColor && FlagsOverview.flagFiveButtonColor && FlagsOverview.flagSixButtonColor) {
         startActivity(Intent(this, FlagSevenSqliteActivity::class.java))
         //}
     }
 
-    fun goToFlagEightLoginActivity(view: View?) {
+    fun goToFlagEightLoginActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagEightLoginActivity::class.java))
     }
 
-    fun goToFlagNineFirebaseActivity(view: View?) {
+    fun goToFlagNineFirebaseActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagNineFirebaseActivity::class.java))
     }
 
-    fun goToFlagTenUnicodeActivity(view: View?) {
+    fun goToFlagTenUnicodeActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagTenUnicodeActivity::class.java))
     }
 
-    fun goToFlagElevenDeeplinkActivity(view: View?) {
+    fun goToFlagElevenDeeplinkActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         if (click == 0) {
             Toast.makeText(applicationContext, "Exploit the schema!", Toast.LENGTH_LONG).show()
-            click = click + 1
+            click++
         } else if (click == 1) {
             Toast.makeText(applicationContext, "Check the Manifest!", Toast.LENGTH_LONG).show()
             click = 0
         }
     }
 
-    fun goToFlagTwelveProtectedActivity(view: View?) {
+    fun goToFlagTwelveProtectedActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
 
         when (click) {
             0 -> {
@@ -91,11 +91,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun goToFlagThirteenActivity(view: View?) {
+    fun goToFlagThirteenActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, RCEActivity::class.java))
     }
 
-    fun goToFlagFourteenActivity(view: View?) {
+    fun goToFlagFourteenActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(
                 FlutterActivity
                         .withNewEngine()
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun goToFlagFlagsOverview(view: View?) {
+    fun goToFlagFlagsOverview(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagsOverview::class.java))
     }
 

@@ -94,7 +94,7 @@ public class FlagEightLoginActivity extends AppCompatActivity {
                 if (post.equals(value)) {
                     FlagsOverview.flagEightButtonColor = true;
                     SharedPreferences.Editor editor = settings.edit();
-                    editor.putBoolean("flagEightButtonColor", true).commit();
+                    editor.putBoolean("flagEightButtonColor", true).apply();
                     correctFlag();
                 } else {
                     Toast.makeText(FlagEightLoginActivity.this, "Try again! :D",

@@ -52,7 +52,7 @@ class FlagTenUnicodeActivity : AppCompatActivity() {
         }
     }
 
-    fun submitFlag(view: View) {
+    fun submitFlag(@Suppress("UNUSED_PARAMETER")view: View) {
 
         if (mAuth?.getCurrentUser() != null) {
 
