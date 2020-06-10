@@ -85,10 +85,8 @@ class FlagTenUnicodeActivity : AppCompatActivity() {
 
     private fun correctFlag() {
         val intent = Intent(this, FlagOneSuccess::class.java)
-        val settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE)
-        FlagsOverview.flagTenButtonColor = true
-        val editor: SharedPreferences.Editor = settings.edit()
-        editor.putBoolean("flagTenButtonColor", true).commit()
+        FlagsOverview().flagTenButtonColor = true
+        SecureSharedPrefs().editBoolean(this, "flagTenButtonColor", true)
         startActivity(intent)
     }
 

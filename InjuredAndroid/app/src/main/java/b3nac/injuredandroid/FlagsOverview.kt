@@ -21,6 +21,8 @@ class FlagsOverview : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
 
     var flagTwoButtonColor = false
+    var flagTenButtonColor = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         initEncryptedSharedPreferences()
         super.onCreate(savedInstanceState)
