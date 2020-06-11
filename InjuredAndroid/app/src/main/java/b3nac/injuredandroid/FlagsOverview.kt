@@ -20,6 +20,7 @@ class FlagsOverview : AppCompatActivity() {
     // Step 0: EncryptedSharedPreferences take long to initialize/open, therefor it's better to do it only once and keep an instance
     lateinit var sharedPreferences: SharedPreferences
 
+    var flagOneButtonColor = false
     var flagTwoButtonColor = false
     var flagTenButtonColor = false
 
@@ -65,12 +66,12 @@ class FlagsOverview : AppCompatActivity() {
         flagFourteenButton = findViewById(R.id.button38)
 
         //Start of flag one
-        if (settings.getBoolean("flagOneButtonColor", false)) {
-            flagOneButtonColor = settings.getBoolean("flagOneButtonColor", true)
+        if (sharedPreferences.getBoolean("flagOneButtonColor", false)) {
+            flagOneButtonColor = sharedPreferences.getBoolean("flagOneButtonColor", true)
             flagOneButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagOneButtonColor", true)) {
-            flagOneButtonColor = settings.getBoolean("flagOneButtonColor", false)
+        if (sharedPreferences.getBoolean("flagOneButtonColor", true)) {
+            flagOneButtonColor = sharedPreferences.getBoolean("flagOneButtonColor", false)
             flagOneButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagOneButtonColor) {
@@ -256,7 +257,6 @@ class FlagsOverview : AppCompatActivity() {
         var flagEightButtonColor = false
         @JvmField
         var flagNineButtonColor = false
-        var flagTenButtonColor = false
         var flagElevenButtonColor = false
         @JvmField
         var flagTwelveButtonColor = false
