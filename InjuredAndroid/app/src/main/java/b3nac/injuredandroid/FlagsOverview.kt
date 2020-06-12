@@ -23,6 +23,7 @@ class FlagsOverview : AppCompatActivity() {
     var flagOneButtonColor = false
     var flagTwoButtonColor = false
     var flagThreeButtonColor = false
+    var flagFourButtonColor = false
     var flagTenButtonColor = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,12 +105,12 @@ class FlagsOverview : AppCompatActivity() {
             flagThreeButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag four
-        if (settings.getBoolean("flagFourButtonColor", false)) {
-            flagFourButtonColor = settings.getBoolean("flagFourButtonColor", true)
+        if (sharedPreferences.getBoolean("flagFourButtonColor", false)) {
+            flagFourButtonColor = sharedPreferences.getBoolean("flagFourButtonColor", true)
             flagFourButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagFourButtonColor", true)) {
-            flagFourButtonColor = settings.getBoolean("flagFourButtonColor", false)
+        if (sharedPreferences.getBoolean("flagFourButtonColor", true)) {
+            flagFourButtonColor = sharedPreferences.getBoolean("flagFourButtonColor", false)
             flagFourButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagFourButtonColor) {
