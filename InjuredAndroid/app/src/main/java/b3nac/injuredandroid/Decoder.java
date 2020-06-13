@@ -7,7 +7,7 @@ import android.util.Base64;
  */
 
 public class Decoder {
-    byte [] data = Base64.decode("NF9vdmVyZG9uZV9vbWVsZXRz", Base64.DEFAULT);
+    private byte [] data = Base64.decode("NF9vdmVyZG9uZV9vbWVsZXRz", Base64.DEFAULT);
 
     public byte[] getData() {
         return data;
