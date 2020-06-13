@@ -56,25 +56,20 @@ public class RCEActivity extends AppCompatActivity {
         anon();
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-
-        {
-            @Override
-            public void onClick (View view){
-                if (click == 0) {
-                    Snackbar.make(view, "Find the binary!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    //Figure out how to login anonymously on click
-                    click = click + 1;
-                } else if (click == 1) {
-                    Snackbar.make(view, "Permissions matter.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = click + 1;
-                } else if (click == 2) {
-                    Snackbar.make(view, "Combine output.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = 0;
-                }
+        fab.setOnClickListener(view -> {
+            if (click == 0) {
+                Snackbar.make(view, "Find the binary!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                //Figure out how to login anonymously on click
+                click = click + 1;
+            } else if (click == 1) {
+                Snackbar.make(view, "Permissions matter.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = click + 1;
+            } else if (click == 2) {
+                Snackbar.make(view, "Combine output.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = 0;
             }
         });
 
