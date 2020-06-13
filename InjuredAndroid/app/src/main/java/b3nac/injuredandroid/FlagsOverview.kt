@@ -24,6 +24,7 @@ class FlagsOverview : AppCompatActivity() {
     var flagTwoButtonColor = false
     var flagThreeButtonColor = false
     var flagFourButtonColor = false
+    var flagFiveButtonColor = false
     var flagTenButtonColor = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,108 +118,108 @@ class FlagsOverview : AppCompatActivity() {
             flagFourButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag five
-        if (settings.getBoolean("flagFiveButtonColor", false)) {
-            flagFiveButtonColor = settings.getBoolean("flagFiveButtonColor", true)
+        if (sharedPreferences.getBoolean("flagFiveButtonColor", false)) {
+            flagFiveButtonColor = sharedPreferences.getBoolean("flagFiveButtonColor", true)
             flagFiveButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagFiveButtonColor", true)) {
-            flagFiveButtonColor = settings.getBoolean("flagFiveButtonColor", false)
+        if (sharedPreferences.getBoolean("flagFiveButtonColor", true)) {
+            flagFiveButtonColor = sharedPreferences.getBoolean("flagFiveButtonColor", false)
             flagFiveButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagFiveButtonColor) {
             flagFiveButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag six
-        if (settings.getBoolean("flagSixButtonColor", false)) {
-            flagSixButtonColor = settings.getBoolean("flagSixButtonColor", true)
+        if (sharedPreferences.getBoolean("flagSixButtonColor", false)) {
+            flagSixButtonColor = sharedPreferences.getBoolean("flagSixButtonColor", true)
             flagSixButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagSixButtonColor", true)) {
-            flagSixButtonColor = settings.getBoolean("flagSixButtonColor", false)
+        if (sharedPreferences.getBoolean("flagSixButtonColor", true)) {
+            flagSixButtonColor = sharedPreferences.getBoolean("flagSixButtonColor", false)
             flagSixButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagSixButtonColor) {
             flagSixButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag seven
-        if (settings.getBoolean("flagSevenButtonColor", false)) {
-            flagSevenButtonColor = settings.getBoolean("flagSevenButtonColor", true)
+        if (sharedPreferences.getBoolean("flagSevenButtonColor", false)) {
+            flagSevenButtonColor = sharedPreferences.getBoolean("flagSevenButtonColor", true)
             flagSevenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagSevenButtonColor", true)) {
-            flagSevenButtonColor = settings.getBoolean("flagSevenButtonColor", false)
+        if (sharedPreferences.getBoolean("flagSevenButtonColor", true)) {
+            flagSevenButtonColor = sharedPreferences.getBoolean("flagSevenButtonColor", false)
             flagSevenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagSevenButtonColor) {
             flagSevenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag eight
-        if (settings.getBoolean("flagEightButtonColor", false)) {
-            flagEightButtonColor = settings.getBoolean("flagEightButtonColor", true)
+        if (sharedPreferences.getBoolean("flagEightButtonColor", false)) {
+            flagEightButtonColor = sharedPreferences.getBoolean("flagEightButtonColor", true)
             flagEightButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagEightButtonColor", true)) {
-            flagEightButtonColor = settings.getBoolean("flagEightButtonColor", false)
+        if (sharedPreferences.getBoolean("flagEightButtonColor", true)) {
+            flagEightButtonColor = sharedPreferences.getBoolean("flagEightButtonColor", false)
             flagEightButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagEightButtonColor) {
             flagEightButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag nine
-        if (settings.getBoolean("flagNineButtonColor", false)) {
-            flagNineButtonColor = settings.getBoolean("flagNineButtonColor", true)
+        if (sharedPreferences.getBoolean("flagNineButtonColor", false)) {
+            flagNineButtonColor = sharedPreferences.getBoolean("flagNineButtonColor", true)
             flagNineButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagNineButtonColor", true)) {
-            flagNineButtonColor = settings.getBoolean("flagNineButtonColor", false)
+        if (sharedPreferences.getBoolean("flagNineButtonColor", true)) {
+            flagNineButtonColor = sharedPreferences.getBoolean("flagNineButtonColor", false)
             flagNineButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagNineButtonColor) {
             flagNineButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag ten
-        if (settings.getBoolean("flagTenButtonColor", false)) {
-            flagTenButtonColor = settings.getBoolean("flagTenButtonColor", true)
+        if (sharedPreferences.getBoolean("flagTenButtonColor", false)) {
+            flagTenButtonColor = sharedPreferences.getBoolean("flagTenButtonColor", true)
             flagTenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagTenButtonColor", true)) {
-            flagTenButtonColor = settings.getBoolean("flagTenButtonColor", false)
+        if (sharedPreferences.getBoolean("flagTenButtonColor", true)) {
+            flagTenButtonColor = sharedPreferences.getBoolean("flagTenButtonColor", false)
             flagTenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagTenButtonColor) {
             flagTenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag eleven
-        if (settings.getBoolean("flagElevenButtonColor", false)) {
-            flagElevenButtonColor = settings.getBoolean("flagElevenButtonColor", true)
+        if (sharedPreferences.getBoolean("flagElevenButtonColor", false)) {
+            flagElevenButtonColor = sharedPreferences.getBoolean("flagElevenButtonColor", true)
             flagElevenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagElevenButtonColor", true)) {
-            flagElevenButtonColor = settings.getBoolean("flagElevenButtonColor", false)
+        if (sharedPreferences.getBoolean("flagElevenButtonColor", true)) {
+            flagElevenButtonColor = sharedPreferences.getBoolean("flagElevenButtonColor", false)
             flagElevenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagElevenButtonColor) {
             flagElevenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag twelve
-        if (settings.getBoolean("flagTwelveButtonColor", false)) {
-            flagTwelveButtonColor = settings.getBoolean("flagTwelveButtonColor", true)
+        if (sharedPreferences.getBoolean("flagTwelveButtonColor", false)) {
+            flagTwelveButtonColor = sharedPreferences.getBoolean("flagTwelveButtonColor", true)
             flagTwelveButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagTwelveButtonColor", true)) {
-            flagTwelveButtonColor = settings.getBoolean("flagTwelveButtonColor", false)
+        if (sharedPreferences.getBoolean("flagTwelveButtonColor", true)) {
+            flagTwelveButtonColor = sharedPreferences.getBoolean("flagTwelveButtonColor", false)
             flagTwelveButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagTwelveButtonColor) {
             flagTwelveButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
         //Start of flag thirteen
-        if (settings.getBoolean("flagThirteenButtonColor", false)) {
-            flagThirteenButtonColor = settings.getBoolean("flagThirteenButtonColor", true)
+        if (sharedPreferences.getBoolean("flagThirteenButtonColor", false)) {
+            flagThirteenButtonColor = sharedPreferences.getBoolean("flagThirteenButtonColor", true)
             flagThirteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagThirteenButtonColor", true)) {
-            flagThirteenButtonColor = settings.getBoolean("flagThirteenButtonColor", false)
+        if (sharedPreferences.getBoolean("flagThirteenButtonColor", true)) {
+            flagThirteenButtonColor = sharedPreferences.getBoolean("flagThirteenButtonColor", false)
             flagThirteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
         if (!flagThirteenButtonColor) {
@@ -233,7 +234,7 @@ class FlagsOverview : AppCompatActivity() {
             flagFourteenButtonColor = true
             flagFourteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
-        if (settings.getBoolean("flagFourteenButtonColor", true)) {
+        if (sharedPreferences.getBoolean("flagFourteenButtonColor", true)) {
             flagFourteenButtonColor = flutterprefs.getBoolean("flagFourteenButtonColor", false)
             flagFourteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
         }
@@ -243,12 +244,6 @@ class FlagsOverview : AppCompatActivity() {
     }
 
     companion object {
-        @JvmField
-        var flagOneButtonColor = false
-        @JvmField
-        var flagThreeButtonColor = false
-        @JvmField
-        var flagFourButtonColor = false
         @JvmField
         var flagFiveButtonColor = false
         @JvmField

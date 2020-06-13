@@ -87,7 +87,6 @@ public class FlagSevenSqliteActivity extends AppCompatActivity {
 
     public void submitFlag(View view) {
 
-        final SharedPreferences settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE);
         EditText editText8 = findViewById(R.id.editText8);
         final String post = editText8.getText().toString();
         EditText editText7 = findViewById(R.id.editText7);
@@ -99,8 +98,8 @@ public class FlagSevenSqliteActivity extends AppCompatActivity {
                 String value = (String) dataSnapshot.getValue();
                 if (post.equals(value) && correctPassword) {
                     FlagsOverview.flagSevenButtonColor = true;
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putBoolean("flagSevenButtonColor", true).commit();
+                    SecureSharedPrefs secure = new SecureSharedPrefs();
+                    secure.editBoolean(getApplicationContext(), "flagSevenButtonColor", true);
                     correctFlag();
                 } else {
                     Toast.makeText(FlagSevenSqliteActivity.this, "Try again! :D",

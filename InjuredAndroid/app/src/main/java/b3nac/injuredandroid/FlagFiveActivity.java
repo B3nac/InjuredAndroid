@@ -18,8 +18,6 @@ public class FlagFiveActivity extends AppCompatActivity {
 
     int click = 0;
     private FlagFiveReceiver fReceiver = new FlagFiveReceiver();
-    private ComponentName mReceiverComponentName;
-    private PackageManager mPackageManager;
 
 
     @Override
@@ -48,8 +46,8 @@ public class FlagFiveActivity extends AppCompatActivity {
         Button broadcastButton = findViewById(R.id.button9);
 
         //Get the PackageManager and ComponentName so you can toggle to broadcast receiver.
-        mReceiverComponentName = new ComponentName(this, FlagFiveReceiver.class);
-        mPackageManager = getPackageManager();
+        ComponentName mReceiverComponentName = new ComponentName(this, FlagFiveReceiver.class);
+        PackageManager mPackageManager = getPackageManager();
 
         //Use LocalBroadcastManager so that the broadcast is not received by other applications.
         LocalBroadcastManager.getInstance(this).registerReceiver
