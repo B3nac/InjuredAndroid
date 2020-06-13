@@ -34,3 +34,6 @@ Decompiling the Android app is highly recommended.
 
  Good luck and have fun! :D
 
+### Spoilers
+
+Looking at the source code of the applications in the InjuredAndroid directory, InjuredAndroid-FlagWalkthroughs.md file, or binary source code in the Binaries directory will spoil some if not all of the ctf challenges.
