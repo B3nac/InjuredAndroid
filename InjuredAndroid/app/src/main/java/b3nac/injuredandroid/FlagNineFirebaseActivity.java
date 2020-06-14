@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.nio.charset.StandardCharsets;
 
 public class FlagNineFirebaseActivity extends AppCompatActivity {
@@ -69,7 +71,6 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
     public void submitFlag(View view) {
 
-        final SharedPreferences settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE);
         EditText editText2 = findViewById(R.id.editText2);
         final String post = editText2.getText().toString();
         byte[] decodedPost = Base64.decode(post, Base64.DEFAULT);
@@ -77,13 +78,12 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
 
         childRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 String value = (String) dataSnapshot.getValue();
                 if (decoded.equals(value)) {
                     FlagsOverview.flagNineButtonColor = true;
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putBoolean("flagNineButtonColor", true).commit();
-                    logFlagFound();
+                    SecureSharedPrefs secure = new SecureSharedPrefs();
+                    secure.editBoolean(getApplicationContext(), "flagNineButtonColor", true);
                     correctFlag();
                 } else {
                     Toast.makeText(FlagNineFirebaseActivity.this, "Try again! :D",
@@ -91,7 +91,7 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
                 Log.e(TAG, "onCancelled", databaseError.toException());
             }
         });
@@ -100,13 +100,6 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
     private void correctFlag() {
         Intent intent = new Intent(this, FlagOneSuccess.class);
         startActivity(intent);
-    }
-    private void logFlagFound() {
-        //Firebase analytics
-        String text = "Someone found the flag!";
-        Bundle params = new Bundle();
-        params.putString("full_text", text);
-        mFirebaseAnalytics.logEvent("Flag_found", params);
     }
 }
 

@@ -43,17 +43,14 @@ public class FlagTwelveProtectedActivity extends AppCompatActivity {
 
             flagWebView.loadUrl(getIntent().getStringExtra("totally_secure"));
             FlagsOverview.flagTwelveButtonColor = true;
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("flagTwelveButtonColor", true).commit();
+            SecureSharedPrefs secure = new SecureSharedPrefs();
+            secure.editBoolean(getApplicationContext(), "flagTwelveButtonColor", true);
             correctFlag();
 
         } else {
 
             flagWebView.loadData(getIntent().getStringExtra("totally_secure"), "text/html", "UTF-8");
-            FlagsOverview.flagTwelveButtonColor = true;
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("flagTwelveButtonColor", true).commit();
-            correctFlag();
+
         }
     }
 

@@ -25,7 +25,10 @@ class FlagsOverview : AppCompatActivity() {
     var flagThreeButtonColor = false
     var flagFourButtonColor = false
     var flagFiveButtonColor = false
+    var flagNineButtonColor = false
     var flagTenButtonColor = false
+    var flagElevenButtonColor = false
+    var flagFourteenButtonColor = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initEncryptedSharedPreferences()
@@ -243,25 +246,6 @@ class FlagsOverview : AppCompatActivity() {
         }
     }
 
-    companion object {
-        @JvmField
-        var flagFiveButtonColor = false
-        @JvmField
-        var flagSixButtonColor = false
-        @JvmField
-        var flagSevenButtonColor = false
-        @JvmField
-        var flagEightButtonColor = false
-        @JvmField
-        var flagNineButtonColor = false
-        var flagElevenButtonColor = false
-        @JvmField
-        var flagTwelveButtonColor = false
-        @JvmField
-        var flagThirteenButtonColor = false
-        var flagFourteenButtonColor = false
-    }
-
     private fun initEncryptedSharedPreferences() {
 
         // Step 1: Create or retrieve the Master Key for encryption/decryption
@@ -276,4 +260,26 @@ class FlagsOverview : AppCompatActivity() {
                 EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
     }
+
+    companion object {
+
+        @kotlin.jvm.JvmField
+        var flagSixButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagSevenButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagEightButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagNineButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagTwelveButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagThirteenButtonColor = false
+    }
+
 }

@@ -29,6 +29,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -74,7 +76,6 @@ public class RCEActivity extends AppCompatActivity {
         });
 
         if (getIntent() != null && getIntent().getData() != null) {
-            final SharedPreferences settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE);
             copyAssets();
             Uri data = getIntent().getData();
 
@@ -87,13 +88,13 @@ public class RCEActivity extends AppCompatActivity {
                 childRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                         String value = (String) dataSnapshot.getValue();
 
                         if (combinedParam != null && combinedParam.equals(value)) {
                             FlagsOverview.flagThirteenButtonColor = true;
-                            SharedPreferences.Editor editor = settings.edit();
-                            editor.putBoolean("flagThirteenButtonColor", true).apply();
+                            SecureSharedPrefs secure = new SecureSharedPrefs();
+                            secure.editBoolean(getApplicationContext(), "flagThirteenButtonColor", true);
                             correctFlag();
                         } else {
                             Toast.makeText(RCEActivity.this, "Try again! :D",
@@ -102,7 +103,7 @@ public class RCEActivity extends AppCompatActivity {
                         }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NotNull DatabaseError databaseError) {
                         Log.e(TAG, "onCancelled", databaseError.toException());
                     }
                 });
@@ -183,15 +184,12 @@ public class RCEActivity extends AppCompatActivity {
     private void anon() {
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                        } else {
-                            Toast.makeText(RCEActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                    } else {
+                        Toast.makeText(RCEActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }

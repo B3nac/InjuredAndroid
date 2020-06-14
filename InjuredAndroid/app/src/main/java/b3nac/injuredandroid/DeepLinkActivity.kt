@@ -69,11 +69,10 @@ class DeepLinkActivity : AppCompatActivity() {
         childRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val value = dataSnapshot.value as String?
-                val settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE)
+
                 if (post == value) {
-                    FlagsOverview.flagElevenButtonColor = true
-                    val editor: SharedPreferences.Editor = settings.edit()
-                    editor.putBoolean("flagElevenButtonColor", true).apply()
+                    FlagsOverview().flagElevenButtonColor = true
+                    SecureSharedPrefs().editBoolean(applicationContext, "flagElevenButtonColor", true)
                     correctFlag()
                 } else {
                     Toast.makeText(this@DeepLinkActivity, "Try again! :D",

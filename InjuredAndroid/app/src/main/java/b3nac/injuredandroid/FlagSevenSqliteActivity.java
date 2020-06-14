@@ -22,6 +22,8 @@ import android.util.Base64;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.nio.charset.StandardCharsets;
 
 import b3nac.injuredandroid.DatabaseSchema.Add;
@@ -94,7 +96,7 @@ public class FlagSevenSqliteActivity extends AppCompatActivity {
 
          mListener = childRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 String value = (String) dataSnapshot.getValue();
                 if (post.equals(value) && correctPassword) {
                     FlagsOverview.flagSevenButtonColor = true;
@@ -108,14 +110,14 @@ public class FlagSevenSqliteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
                 Log.e(TAG, "onCancelled", databaseError.toException());
             }
         });
 
         mListenerTwo = childRefTwo.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshotTwo) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshotTwo) {
                 String value = (String) dataSnapshotTwo.getValue();
                 if (postTwo.equals(value)) {
                     correctPassword = true;
@@ -126,7 +128,7 @@ public class FlagSevenSqliteActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
                 Log.e(TAG, "onCancelled", databaseError.toException());
             }
         });
