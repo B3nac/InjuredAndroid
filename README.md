@@ -4,7 +4,7 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 
 ### Setup for a physical device
 
-1. Download injuredandroid.apk from Github
+1. Download the latest debug or release injuredandroid.apk from the releases.
 
 2. Enable USB debugging on your Android test phone.
 
@@ -19,6 +19,10 @@ A vulnerable Android application with ctf examples based on bug bounty findings,
 2. Start the emulator from Android Studio (I recommend downloading an emulator with Google APIs so root adb can be enabled).
 
 3. Drag and drop the .apk file on the emulator and InjuredAndroid.apk will install.
+
+### Build from source
+
+Build steps in progress. The flutter module makes this slightly more complicated.
 
 ### Tips and CTF Overview
 
