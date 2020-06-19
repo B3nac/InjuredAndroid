@@ -10,11 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : AppCompatActivity() {
-    /* access modifiers changed from: protected */
+
     var click = 0
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        handleIntent()
     }
 
     fun goToXSSText(@Suppress("UNUSED_PARAMETER")view: View?) {
@@ -123,4 +125,14 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
+
+    fun handleIntent() {
+        val data = intent.data
+        if (data == null) return
+
+        if (data.scheme == "flag11") {
+            startActivity(Intent(this, DeepLinkActivity::class.java))
+        }
+    }
+
 }

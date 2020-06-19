@@ -1,8 +1,6 @@
 package b3nac.injuredandroid
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -33,17 +31,12 @@ class DeepLinkActivity : AppCompatActivity() {
 
         val intentToUri = getIntent()
         val data = intentToUri.data
-        val appSchema = "flag11" == data!!.getScheme()
+        val appSchema = "flag11" == data?.getScheme()
 
         if (appSchema) {
 
-            //val convertScheme = "https://" + data.host
-
-            //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(convertScheme)))
             startActivity(Intent(Intent.ACTION_VIEW))
 
-        } else {
-            startActivity(Intent(Intent.ACTION_VIEW))
         }
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
