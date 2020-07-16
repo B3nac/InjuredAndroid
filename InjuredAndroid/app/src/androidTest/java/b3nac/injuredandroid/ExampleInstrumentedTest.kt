@@ -37,4 +37,11 @@ class DeepLinkingTest {
         intended(hasComponent(DeepLinkActivity::class.java!!.getName()))
     }
 
+    @Test
+    fun should_launch_RCEActivity() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("flag13://rce"))
+        activityTestRule.launchActivity(intent)
+        intended(hasComponent(RCEActivity::class.java!!.getName()))
+    }
+
 }

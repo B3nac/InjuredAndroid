@@ -21,6 +21,6 @@ public class XSSTextActivity extends AppCompatActivity {
         String post = editText.getText().toString();
         intent.putExtra(POST_STRING, post);
         startActivity(intent);
-
     }
+
 }

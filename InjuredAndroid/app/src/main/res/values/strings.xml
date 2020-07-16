@@ -70,4 +70,6 @@
     <string name="flag_13">Flag 13</string>
     <string name="flag_fourteen_flutter_xss">Flag fourteen - Flutter XSS</string>
     <string name="flag_14">Flag 14</string>
+    <string name="title_activity_assembly">AssemblyActivity</string>
+    <string name="flag_15_assembly">Flag 15 - Assembly</string>
 </resources>

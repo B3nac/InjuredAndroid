@@ -106,6 +106,11 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    fun goToFlagFifteenActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
+        startActivity(Intent(this, AssemblyActivity::class.java))
+    }
+
+
     fun goToFlagFlagsOverview(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagsOverview::class.java))
     }
@@ -126,13 +131,18 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun handleIntent() {
+    private fun handleIntent() {
         val data = intent.data
         if (data == null) return
 
         if (data.scheme == "flag11") {
             startActivity(Intent(this, DeepLinkActivity::class.java))
         }
+
+        if (data.scheme == "flag13") {
+            startActivity(Intent(this, RCEActivity::class.java))
+        }
+
     }
 
 }

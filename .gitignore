@@ -1,4 +1,9 @@
-#built application files
+# NDK directories
+.cxx
+app/.cxx
+InjuredAndroid/app/.cxx
+
+# built application files
 *.ap_
 
 # files for the dex VM
