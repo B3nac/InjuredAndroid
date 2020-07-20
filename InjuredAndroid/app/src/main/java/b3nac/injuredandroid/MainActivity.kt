@@ -48,9 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToFlagSevenSqliteActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
-        //if (FlagsOverview.flagOneButtonColor && FlagsOverview.flagTwoButtonColor && FlagsOverview.flagThreeButtonColor && FlagsOverview.flagFourButtonColor && FlagsOverview.flagFiveButtonColor && FlagsOverview.flagSixButtonColor) {
         startActivity(Intent(this, FlagSevenSqliteActivity::class.java))
-        //}
     }
 
     fun goToFlagEightLoginActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
