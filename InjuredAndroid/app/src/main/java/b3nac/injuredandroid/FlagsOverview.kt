@@ -70,6 +70,8 @@ class FlagsOverview : AppCompatActivity() {
         flagThirteenButton = findViewById(R.id.button37)
         val flagFourteenButton: Button
         flagFourteenButton = findViewById(R.id.button38)
+        val flagFifteenButton: Button
+        flagFifteenButton = findViewById(R.id.button41)
 
         //Start of flag one
         if (sharedPreferences.getBoolean("flagOneButtonColor", false)) {
@@ -244,6 +246,18 @@ class FlagsOverview : AppCompatActivity() {
         if (value != "Flag fourteen found!") {
             flagFourteenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
+        //Start of flag fifteen
+        if (sharedPreferences.getBoolean("flagFifteenButtonColor", false)) {
+            flagFifteenButtonColor = sharedPreferences.getBoolean("flagFifteenButtonColor", true)
+            flagFifteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
+        }
+        if (sharedPreferences.getBoolean("flagFifteenButtonColor", true)) {
+            flagFifteenButtonColor = sharedPreferences.getBoolean("flagFifteenButtonColor", false)
+            flagFifteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
+        }
+        if (!flagFifteenButtonColor) {
+            flagFifteenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
+        }
     }
 
     private fun initEncryptedSharedPreferences() {
@@ -280,6 +294,9 @@ class FlagsOverview : AppCompatActivity() {
 
         @kotlin.jvm.JvmField
         var flagThirteenButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagFifteenButtonColor = false
     }
 
 }

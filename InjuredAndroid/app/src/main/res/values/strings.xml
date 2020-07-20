@@ -73,4 +73,5 @@
     <string name="title_activity_assembly">AssemblyActivity</string>
     <string name="flag_15_assembly">Flag 15 - Assembly</string>
     <string name="assemblytextview">AssemblyTextView</string>
+    <string name="flag_15">Flag 15</string>
 </resources>

@@ -48,23 +48,20 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (click == 0) {
-                    Snackbar.make(view, "Use the .json trick with database url", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    //Figure out how to login anonymously on click
-                    click = click + 1;
-                } else if (click == 1) {
-                    Snackbar.make(view, "Filenames.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = click + 1;
-                } else if (click == 2) {
-                    Snackbar.make(view, "Encoding.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = 0;
-                }
+        fab.setOnClickListener(view -> {
+            if (click == 0) {
+                Snackbar.make(view, "Use the .json trick with database url", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                //Figure out how to login anonymously on click
+                click = click + 1;
+            } else if (click == 1) {
+                Snackbar.make(view, "Filenames.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = click + 1;
+            } else if (click == 2) {
+                Snackbar.make(view, "Encoding.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = 0;
             }
         });
     }

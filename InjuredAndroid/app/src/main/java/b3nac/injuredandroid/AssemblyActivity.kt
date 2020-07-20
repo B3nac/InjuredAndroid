@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.util.*
 
 class AssemblyActivity : AppCompatActivity() {
 
@@ -37,6 +37,10 @@ class AssemblyActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val tv = findViewById<TextView>(R.id.textView10)
         setSupportActionBar(toolbar)
+
+        val mAuth: FirebaseAuth
+        mAuth = FirebaseAuth.getInstance()
+        mAuth.signInAnonymously()
 
         val XORstring = stringFromJNI()
         val bytes = XORstring.toByteArray()
@@ -71,9 +75,9 @@ class AssemblyActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val value = dataSnapshot.value as String?
                 if (post == value) {
-                    FlagsOverview.flagEightButtonColor = true
+                    FlagsOverview.flagFifteenButtonColor = true
                     val secure = SecureSharedPrefs()
-                    secure.editBoolean(applicationContext, "flagEightButtonColor", true)
+                    secure.editBoolean(applicationContext, "flagFifteenButtonColor", true)
                     correctFlag()
                 } else {
                     Toast.makeText(this@AssemblyActivity, "Try again! :D",
