@@ -23,13 +23,7 @@ class AssemblyActivity : AppCompatActivity() {
     var database = FirebaseDatabase.getInstance().reference
     var childRef = database.child("/assembly")
 
-    companion object {
-        init {
-            System.loadLibrary("native-lib")
-        }
-
-        private const val TAG = "AssemblyActivity"
-    }
+    val XORstring = stringFromJNI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +31,11 @@ class AssemblyActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val tv = findViewById<TextView>(R.id.textView10)
         setSupportActionBar(toolbar)
+        anon()
 
-        val mAuth: FirebaseAuth
-        mAuth = FirebaseAuth.getInstance()
-        mAuth.signInAnonymously()
+        val charset = Charsets.UTF_8
+        val bytes = XORstring.toByteArray(charset)
 
-        val XORstring = stringFromJNI()
-        val bytes = XORstring.toByteArray()
         tv.text = bytes.contentToString()
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
@@ -69,6 +61,7 @@ class AssemblyActivity : AppCompatActivity() {
     }
 
     fun submitFlag(view: View?) {
+
         val editText2 = findViewById<EditText>(R.id.enterFlag)
         val post = editText2.text.toString()
         childRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -86,7 +79,7 @@ class AssemblyActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.e(TAG, "onCancelled", databaseError.toException())
+                Log.e("Access denied", "onCancelled", databaseError.toException())
             }
         })
     }
@@ -96,5 +89,16 @@ class AssemblyActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun anon() {
+        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        mAuth.signInAnonymously()
+    }
+
     external fun stringFromJNI(): String
+
+    companion object {
+        init {
+            System.loadLibrary("native-lib")
+        }
+    }
 }

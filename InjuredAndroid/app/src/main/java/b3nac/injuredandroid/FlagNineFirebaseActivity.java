@@ -1,8 +1,6 @@
 package b3nac.injuredandroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -16,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +26,6 @@ import java.nio.charset.StandardCharsets;
 
 public class FlagNineFirebaseActivity extends AppCompatActivity {
 
-    private FirebaseAnalytics mFirebaseAnalytics;
     int click = 0;
     private static final String TAG = "FirebaseActivity";
     final String directory = "ZmxhZ3Mv";
@@ -45,7 +41,6 @@ public class FlagNineFirebaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flag_nine_firebase);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
