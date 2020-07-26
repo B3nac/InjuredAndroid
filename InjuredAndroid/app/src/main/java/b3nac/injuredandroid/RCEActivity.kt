@@ -53,7 +53,7 @@ class RCEActivity : AppCompatActivity() {
             copyAssets()
             val data = intent.data
             try {
-                val intentParam = data.getQueryParameter("binary")
+                val intentParam = data!!.getQueryParameter("binary")
                 val binaryParam = data.getQueryParameter("param")
                 val combinedParam = data.getQueryParameter("combined")
                 childRef.addListenerForSingleValueEvent(object : ValueEventListener {
