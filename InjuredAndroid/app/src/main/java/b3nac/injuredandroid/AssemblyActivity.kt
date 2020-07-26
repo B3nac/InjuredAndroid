@@ -28,6 +28,8 @@ class AssemblyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assembly)
+        SecureSharedPrefs.setContext(this)
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val tv = findViewById<TextView>(R.id.textView10)
         setSupportActionBar(toolbar)

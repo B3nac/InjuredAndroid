@@ -33,6 +33,8 @@ class FlagTenUnicodeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flag_ten_unicode)
+        SecureSharedPrefs.setContext(this)
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         mAuth = FirebaseAuth.getInstance()
@@ -89,5 +91,4 @@ class FlagTenUnicodeActivity : AppCompatActivity() {
         SecureSharedPrefs().editBoolean(this, "flagTenButtonColor", true)
         startActivity(intent)
     }
-
 }

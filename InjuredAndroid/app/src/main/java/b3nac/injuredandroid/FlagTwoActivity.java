@@ -18,18 +18,15 @@ public class FlagTwoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (click == 0) {
-                    Snackbar.make(view, "Key words Activity and exported.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = click + 1;
-                } else if (click == 1) {
-                    Snackbar.make(view, "Exported Activities can be accessed with adb or Drozer.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = 0;
-                }
+        fab.setOnClickListener(view -> {
+            if (click == 0) {
+                Snackbar.make(view, "Key words Activity and exported.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = click + 1;
+            } else if (click == 1) {
+                Snackbar.make(view, "Exported Activities can be accessed with adb or Drozer.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = 0;
             }
         });
     }

@@ -14,6 +14,8 @@ class FlagFourActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flag_four)
+        SecureSharedPrefs.setContext(this)
+
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { view ->
             if (click == 0) {
@@ -29,7 +31,7 @@ class FlagFourActivity : AppCompatActivity() {
     }
 
     fun submitFlag(view: View?) {
-        val settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE)
+
         val editText2 = findViewById<EditText>(R.id.editText2)
         val post = editText2.text.toString()
         val decoder = Decoder()

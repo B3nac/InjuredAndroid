@@ -1,36 +1,31 @@
 package b3nac.injuredandroid
 
+import android.app.Application
 import android.content.Context
-import android.security.keystore.KeyGenParameterSpec
-import android.security.keystore.KeyProperties
-import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
-class SecureSharedPrefs : AppCompatActivity() {
+class SecureSharedPrefs : Application() {
+
+    companion object {
+
+        private lateinit var context: Context
+
+        fun setContext(con: Context) {
+            context = con
+        }
+    }
 
     private val preferencesName = "b3nac.injuredandroid.encrypted"
 
-    private val spec = KeyGenParameterSpec.Builder(
-            "super_secret_security_key",
-            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-    )
-            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-            .setKeySize(256)
-            .build()
+    var masterKey = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build()
 
-    private val masterKey: MasterKey = MasterKey.Builder(this)
-            .setKeyGenParameterSpec(spec)
-            .build()
-
-    private val sharedPreferences = EncryptedSharedPreferences.create(
-            this,
+    val sharedPreferences = EncryptedSharedPreferences.create(
+            context,
             preferencesName,
-            masterKey,
+            masterKey, // masterKey created above
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-    )
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)
 
     fun editBoolean(context: Context, string: String, boolean: Boolean) {
 

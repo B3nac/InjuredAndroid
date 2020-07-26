@@ -8,7 +8,7 @@ import android.widget.Toast
 
 class FlagFiveReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val settings = context.getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE)
+
         if (wtf == 0) {
             val sb = StringBuilder()
             sb.append("""

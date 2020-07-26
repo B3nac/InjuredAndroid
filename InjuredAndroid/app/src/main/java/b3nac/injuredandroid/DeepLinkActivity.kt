@@ -28,6 +28,7 @@ class DeepLinkActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deep_link)
+        SecureSharedPrefs.setContext(this)
 
         val intentToUri = getIntent()
         val data = intentToUri.data

@@ -8,6 +8,7 @@ class b25lActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_b25l)
+        SecureSharedPrefs.setContext(this)
 
         FlagsOverview().flagTwoButtonColor = true
 

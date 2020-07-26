@@ -25,21 +25,19 @@ public class FlagFiveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag_five);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (click == 0) {
-                    Snackbar.make(view, "Where is bob.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = click + 1;
-                } else if (click == 1) {
-                    Snackbar.make(view, "Classes and imports.", Snackbar.LENGTH_LONG)
-                            .setAction("Action",null).show();
-                    click = 0;
-                }
+        fab.setOnClickListener(view -> {
+            if (click == 0) {
+                Snackbar.make(view, "Where is bob.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = click + 1;
+            } else if (click == 1) {
+                Snackbar.make(view, "Classes and imports.", Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                click = 0;
             }
         });
 
@@ -54,12 +52,7 @@ public class FlagFiveActivity extends AppCompatActivity {
                 (fReceiver, new IntentFilter(FlagFiveReceiver.ACTION_CUSTOM_BROADCAST));
 
         //onClick method for the button
-        broadcastButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                broadcastIntent();
-            }
-        });
+        broadcastButton.setOnClickListener(view -> broadcastIntent());
     }
 
     @Override
