@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterxssmodule/run_javascript.dart';
+import 'package:flutterxssmodule/plugin_ssl_bypass.dart';
 import 'login-xss.dart';
 import 'auth-bypass.dart';
 
@@ -124,6 +124,34 @@ class MyCustomFormState extends State<MyCustomForm> {
                       ));
                 },
               child: Text('Flutter Auth Bypass'),
+            ),
+          ),
+          Padding(
+              padding: EdgeInsets.only(
+                  left: 25.0, right: 25.0, top: 25.0),
+              child: new Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                  ),
+                ],
+              )),
+          Padding(
+            padding: EdgeInsets.only(
+                left: 25.0, right: 25.0, top: 2.0),
+            child: RaisedButton(
+              onPressed: () {
+                Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text('Processing Data')));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FlutterSSLBypass(),
+                    ));
+              },
+              child: Text('Flutter SSL Bypass'),
             ),
           ),
         ],

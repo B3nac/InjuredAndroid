@@ -8,11 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import b3nac.injuredandroid.RCEActivity
-import com.google.android.gms.tasks.Task
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,7 +20,7 @@ import java.io.*
 class RCEActivity : AppCompatActivity() {
     var database = FirebaseDatabase.getInstance().reference
     var childRef = database.child("/rce")
-    private var mAuth: FirebaseAuth? = null
+
     var click = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +35,11 @@ class RCEActivity : AppCompatActivity() {
                 Snackbar.make(view!!, "Find the binary!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
                 //Figure out how to login anonymously on click
-                click = click + 1
+                click++
             } else if (click == 1) {
                 Snackbar.make(view!!, "Permissions matter.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
-                click = click + 1
+                click++
             } else if (click == 2) {
                 Snackbar.make(view!!, "Combine output.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
@@ -74,16 +71,15 @@ class RCEActivity : AppCompatActivity() {
                         Log.e(TAG, "onCancelled", databaseError.toException())
                     }
                 })
+
                 val process = Runtime.getRuntime().exec(filesDir.parent + "/files/" + intentParam + " " + binaryParam)
                 val bufferedReader = BufferedReader(
                         InputStreamReader(process.inputStream))
                 val log = StringBuilder()
-                var line: String
-                while (bufferedReader.readLine().also { line = it } != null) {
-                    log.append("""
-                        $line
-                        """.trimIndent())
+                bufferedReader.forEachLine {
+                    log.append(it)
                 }
+                process.waitFor()
                 val tv = findViewById<TextView>(R.id.RCEView)
                 tv.text = log.toString()
             } catch (e: IOException) {
@@ -101,7 +97,7 @@ class RCEActivity : AppCompatActivity() {
             Log.e("tag", "Failed to get asset file list.", e)
         }
         if (files != null) for (filename in files) {
-            if (filename != "webkit" && filename != "images") {
+            if (filename != "webkit" && filename != "images" && filename != "flutter_assets") {
                 var `in`: InputStream? = null
                 var out: OutputStream? = null
                 try {
@@ -146,16 +142,8 @@ class RCEActivity : AppCompatActivity() {
     }
 
     private fun anon() {
-        mAuth = FirebaseAuth.getInstance()
-        mAuth!!.signInAnonymously()
-                .addOnCompleteListener(this) { task: Task<AuthResult?> ->
-                    if (task.isSuccessful) {
-                        val user = mAuth!!.currentUser
-                    } else {
-                        Toast.makeText(this@RCEActivity, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                }
+            val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+            mAuth.signInAnonymously()
     }
 
     companion object {
