@@ -40,4 +40,16 @@ class SecureSharedPrefs : Application() {
         sharedPreferences.getBoolean(string, boolean)
         return boolean
     }
+
+    fun putString(context: Context, string: String, value: String?) {
+        val editor = sharedPreferences.edit()
+        editor.putString(string, value).apply()
+        editor.clear()
+    }
+
+    fun getString(s: String, s1: String): String? {
+
+        return sharedPreferences.getString(s, s1)
+
+    }
 }

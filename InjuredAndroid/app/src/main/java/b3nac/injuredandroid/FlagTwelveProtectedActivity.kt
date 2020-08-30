@@ -28,7 +28,6 @@ class FlagTwelveProtectedActivity : AppCompatActivity() {
         }
         val onlyAcceptThisSchema = "https" == uri.scheme
         if (onlyAcceptThisSchema) {
-            flagWebView.loadUrl(intent.getStringExtra("totally_secure"))
             FlagsOverview.flagTwelveButtonColor = true
             val secure = SecureSharedPrefs()
             secure.editBoolean(applicationContext, "flagTwelveButtonColor", true)

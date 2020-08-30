@@ -1,5 +1,6 @@
 package b3nac.injuredandroid;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -35,12 +36,13 @@ public class ExportedProtectedIntent extends AppCompatActivity {
 
         Intent unprotectedIntent = intent.getParcelableExtra("access_protected_component");
 
-        if (!(unprotectedIntent == null)) {
+        assert unprotectedIntent != null;
 
+        ComponentName name = unprotectedIntent.resolveActivity(getPackageManager());
+
+        if (name.getPackageName().equals("b3nac.injuredandroid")) {
             startActivity(unprotectedIntent);
-
         }
-
     }
 
 }

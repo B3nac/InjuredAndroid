@@ -20,11 +20,6 @@ public class ContactActivity extends AppCompatActivity {
         startActivity(emailIntent);
     }
 
-    public void goToDonatePage(View view) {
-        Intent donateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/b3nac"));
-        startActivity(donateIntent);
-    }
-
     public void goToDigitalOcean(View view) {
         Intent digitalOceanIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.do.co/c/9348bb7410b4"));
         startActivity(digitalOceanIntent);

@@ -22,7 +22,6 @@ import java.nio.charset.StandardCharsets
 
 class FlagSevenSqliteActivity : AppCompatActivity() {
     var click = 0
-    var correctPassword = false
     var dbHelper = DataBaseHelper(this)
     val directory = "c3FsaXRl"
     val directoryTwo = "ZjFhZy1wYTU1"
@@ -41,13 +40,14 @@ class FlagSevenSqliteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_flag_seven_sqlite)
         setSupportActionBar(findViewById(R.id.toolbar))
         SecureSharedPrefs.setContext(this)
+        preloadValues()
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { view: View? ->
             if (click == 0) {
                 Snackbar.make(view!!, "Run ADB as root.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
-                click = click + 1
+                click++
             } else if (click == 1) {
                 Snackbar.make(view!!, "Stay on this activity.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
@@ -77,20 +77,29 @@ class FlagSevenSqliteActivity : AppCompatActivity() {
         val post = editText8.text.toString()
         val editText7 = findViewById<EditText>(R.id.editText7)
         val postTwo = editText7.text.toString()
+        val secure = SecureSharedPrefs()
+        val flagSevenValue = secure.getString("flagSevenEncrypted", "")
+        val flagSevenPassword = secure.getString("flagSevenPasswordEncrypted", "")
+
+        if (post == flagSevenValue && postTwo == flagSevenPassword) {
+            FlagsOverview.flagSevenButtonColor = true
+            val secure = SecureSharedPrefs()
+            secure.editBoolean(applicationContext, "flagSevenButtonColor", true)
+            correctFlag()
+        } else {
+            Toast.makeText(this@FlagSevenSqliteActivity, "Try again! :D",
+                    Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun preloadValues() {
         mListener = childRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //val childRefTwo = database.child(refDirectoryTwo)
                 val value = dataSnapshot.value as String?
-                if (post == value && correctPassword) {
-                    FlagsOverview.flagSevenButtonColor = true
-                    val secure = SecureSharedPrefs()
-                    secure.editBoolean(applicationContext, "flagSevenButtonColor", true)
-                    correctFlag()
-                } else {
-                    Toast.makeText(this@FlagSevenSqliteActivity, "Try again! :D",
-                            Toast.LENGTH_SHORT).show()
-                }
+                val secure = SecureSharedPrefs()
+                secure.putString(applicationContext, "flagSevenEncrypted", value)
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.e(TAG, "onCancelled", databaseError.toException())
             }
@@ -98,14 +107,9 @@ class FlagSevenSqliteActivity : AppCompatActivity() {
         mListenerTwo = childRefTwo.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshotTwo: DataSnapshot) {
                 val value = dataSnapshotTwo.value as String?
-                if (postTwo == value) {
-                    correctPassword = true
-                } else {
-                    Toast.makeText(this@FlagSevenSqliteActivity, "Try again! :D",
-                            Toast.LENGTH_SHORT).show()
-                }
+                val secure = SecureSharedPrefs()
+                secure.putString(applicationContext, "flagSevenPasswordEncrypted", value)
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.e(TAG, "onCancelled", databaseError.toException())
             }

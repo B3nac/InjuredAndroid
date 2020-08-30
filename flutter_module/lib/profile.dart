@@ -17,7 +17,6 @@ class MapScreenState extends State<ProfilePage>
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
   SharedPreferences sharedPrefs;
 
-
   @override
   void initState() {
     // TODO: implement initState

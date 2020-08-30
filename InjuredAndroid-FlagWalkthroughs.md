@@ -359,4 +359,89 @@ public class MainActivity extends AppCompatActivity {
 
 ---
 
+### Flag 13 - Treasure_Planet
 
+#### Non-rooted device
+
+1. Run adb as root (Google apis are needed with VM)
+
+`adb root`
+
+2. Use adb shell to access phone file directories
+
+`adb shell`
+
+3. Navigate to `/data/data/b3nac.injuredandroid/files`.
+
+4. chmod the binary that matches your phone architecture.
+
+`chmod +x binaryname`
+
+5. Now use deep links to display binary command results in the Activity WebView. The flag is split into three separate commands.
+
+```html
+<html>
+<p><a href="flag13://rce?binary=narnia.x86_64&param=testOne">Test one!</p>
+<p><a href="flag13://rce?binary=narnia.x86_64&param=testTwo">Test two!</p>
+<p><a href="flag13://rce?binary=narnia.x86_64&param=testThree">Test three!</p>
+<p><a href="flag13://rce?combined=Treasure_Planet">OH SNAP!</p>
+</html>
+```
+
+#### Rooted device
+
+I believe you shouldn't have to chmod the binary with a rooted device.
+
+1. Skip to using deep links to solve the flag.
+
+---
+
+### Flag 14 - Flutter Stored XSS
+
+Solving this flag only requires finding the right javascript function for XSS.
+
+```dart
+if (widget.test == "onclick=alert(1)") {
+```
+
+1. At the login screen enter `onclick=alert(1)` and login.
+
+2. Navigate to the user profile page and the XSS will fire because It's stored as the username while also solving the flag.
+
+---
+
+### Flag 15 - WIN
+
+1. The initial Activity will have a byte array `[58,40,42]` that requires the key to XOR back to the original flag string.
+
+2. Decompile the flutter.so files to find the XOR key and use a programming language of your choice to convert the byte array to a string then XOR the string with the key to find the flag.
+
+```python
+#!/usr/bin/env python
+# encoding: utf-8
+
+def encryptDecrypt(input):
+    key = ['M', 'A', 'D']
+    output = []
+    
+    for i in range(len(input)):
+        xor_num = ord(input[i]) ^ ord(key[i % len(key)])
+        output.append(chr(xor_num))
+    
+    return ''.join(output)
+
+
+def main():
+    encrypted = encryptDecrypt(":(*");
+    print("Encrypted:" + encrypted);
+    
+    decrypted = encryptDecrypt(encrypted);
+    print("Decrypted:" + decrypted);
+    data = [58,40,42]
+    dataConverted = "".join( chr(x) for x in data)
+    print(dataConverted)
+    pass
+
+if __name__ == '__main__':
+    main()
+```
