@@ -228,7 +228,7 @@ private static String remoteUrl = "9EEADi^^:?;FC652?5C@:5]7:C632D6:@]4@>^DB=:E6]
 
 ```
 
-3. Enter both into the submit flag form for completion.
+4. Enter both into the submit flag form for completion.
 
 ---
 
