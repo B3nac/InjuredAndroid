@@ -47,17 +47,17 @@ sdk.dir=/home/username/Android/Sdk
 flutter.sdk=/home/username/flutter
 ```
 
-4. Set the Flutter path in Android Studio
+3. Set the Flutter path in Android Studio
 
 File -> Settings -> Languages ​​& Frameworks -> Flutter
 
-5. Enable Dart Support in Android Studio
+4. Enable Dart Support in Android Studio
 
-6. Run `flutter pub get` to import the flutter dependencies
+5. Run `flutter pub get` to import the flutter dependencies
 
-7. Download the Android NDK that is required for the Assembly flag.
+6. Download the Android NDK that is required for the Assembly flag.
 
-Now you should be able to compile the latest release of InjuredAndroid! 
+7. Now you should be able to compile the latest release of InjuredAndroid! 
 
 ---
 
