@@ -74,4 +74,22 @@
     <string name="flag_15_assembly">Flag 15 - Assembly</string>
     <string name="assemblytextview">AssemblyTextView</string>
     <string name="flag_15">Flag 15</string>
+    <string name="flag_16_csp_bypass">Flag 16 - CSP Bypass</string>
+    <string name="title_activity_c_s_p_bypass">CSPBypassActivity</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="flag_16">Flag 16</string>
+    <string name="textview">TextView</string>
+    <string name="title_activity_flag_seventeen">FlagSeventeenActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="flag_17_ssl_pinning_bypass">Flag 17 - SSL Pinning Bypass</string>
+    <string name="flag_fifteen_assembly">Flag Fifteen - Assembly</string>
+    <string name="flag_sixteen_csp_bypass">Flag Sixteen - CSP Bypass</string>
+    <string name="flag_seventeen_ssl_pinning_bypass">Flag Seventeen - SSL Pinning Bypass</string>
+    <string name="flag_17">Flag 17</string>
 </resources>

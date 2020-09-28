@@ -22,5 +22,4 @@ Depends on all your plugins, and provides a function to register them.
   s.dependency 'flutter_webview_plugin'
   s.dependency 'shared_preferences'
   s.dependency 'ssl_pinning_plugin'
-  s.dependency 'uni_links'
 end

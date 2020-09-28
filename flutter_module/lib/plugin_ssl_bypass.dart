@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ssl_pinning_plugin/ssl_pinning_plugin.dart';
+import 'package:http/http.dart';
 
 void main() => runApp(new FlutterSSLBypass());
 
@@ -57,6 +58,7 @@ class _MyAppState extends State<FlutterSSLBypass> {
         ),
 
       );
+      _makeGetRequest();
     }catch (e){
       Scaffold.of(scaffoldContext).showSnackBar(
         new SnackBar(
@@ -64,10 +66,28 @@ class _MyAppState extends State<FlutterSSLBypass> {
           duration: Duration(seconds: 1),
           backgroundColor: Colors.red,
         ),
-
       );
     }
+  }
 
+  _makeGetRequest() async {
+    // make GET request
+    String url = 'http://b3nac.com/Epic_Awesomeness';
+    Response response = await get(url);
+    // sample info available in response
+    int statusCode = response.statusCode;
+    Map<String, String> headers = response.headers;
+    String contentType = headers['content-type'];
+    String json = response.body;
+
+    // Await the http get response, then decode the json-formatted response.
+
+    if (response.statusCode == 200 || response.statusCode == 302 || response.statusCode == 404 || response.statusCode == 500)  {
+      var responseBody = response.body;
+      print('Number of items: $responseBody.');
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
   }
 
   void submit() {
@@ -76,8 +96,9 @@ class _MyAppState extends State<FlutterSSLBypass> {
       _formKey.currentState.save(); // Save our form now.
 
       this.check(_data.serverURL, _data.allowedSHAFingerprint, _data.sha, _data.headerHttp, _data.timeout);
+
+      }
     }
-  }
 
   @override
   Widget build(BuildContext context) {

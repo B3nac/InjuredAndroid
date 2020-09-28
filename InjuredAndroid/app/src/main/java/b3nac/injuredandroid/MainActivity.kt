@@ -108,6 +108,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, AssemblyActivity::class.java))
     }
 
+    fun goToFlagSixteenActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
+        startActivity(Intent(this, CSPBypassActivity::class.java))
+    }
+
+    fun goToFlagSeventeenActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
+        startActivity(Intent(this, FlagSeventeenActivity::class.java))
+    }
 
     fun goToFlagFlagsOverview(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagsOverview::class.java))

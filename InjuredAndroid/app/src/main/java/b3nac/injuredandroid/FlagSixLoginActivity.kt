@@ -22,7 +22,7 @@ class FlagSixLoginActivity : AppCompatActivity() {
             if (click == 0) {
                 Snackbar.make(view!!, "Keys.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
-                click = click + 1
+                click++
             } else if (click == 1) {
                 Snackbar.make(view!!, "Classes.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()

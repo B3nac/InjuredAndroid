@@ -17,11 +17,13 @@ class FlagTwelveProtectedActivity : AppCompatActivity() {
         SecureSharedPrefs.setContext(this)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
         var uri: Uri? = null
         val intentToUri = intent.getStringExtra("totally_secure")
         uri = Uri.parse(intentToUri)
         flagWebView.settings.javaScriptEnabled = true
         flagWebView.webChromeClient = WebChromeClient()
+
         if (intent == null || !intent.hasExtra("totally_secure")) {
             finish()
             return

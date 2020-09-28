@@ -72,6 +72,10 @@ class FlagsOverview : AppCompatActivity() {
         flagFourteenButton = findViewById(R.id.button38)
         val flagFifteenButton: Button
         flagFifteenButton = findViewById(R.id.button41)
+        val flagSixteenButton: Button
+        flagSixteenButton = findViewById(R.id.button43)
+        val flagSeventeenButton: Button
+        flagSeventeenButton = findViewById(R.id.button46)
 
         //Start of flag one
         if (sharedPreferences.getBoolean("flagOneButtonColor", false)) {
@@ -258,6 +262,30 @@ class FlagsOverview : AppCompatActivity() {
         if (!flagFifteenButtonColor) {
             flagFifteenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
         }
+        //Start of flag sixteen
+        if (sharedPreferences.getBoolean("flagSixteenButtonColor", false)) {
+            flagSixteenButtonColor = sharedPreferences.getBoolean("flagSixteenButtonColor", true)
+            flagSixteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
+        }
+        if (sharedPreferences.getBoolean("flagSixteenButtonColor", true)) {
+            flagSixteenButtonColor = sharedPreferences.getBoolean("flagSixteenButtonColor", false)
+            flagSixteenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
+        }
+        if (!flagSixteenButtonColor) {
+            flagSixteenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
+        }
+        //Start of flag seventeen
+        if (sharedPreferences.getBoolean("flagSeventeenButtonColor", false)) {
+            flagSeventeenButtonColor = sharedPreferences.getBoolean("flagSeventeenButtonColor", true)
+            flagSeventeenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
+        }
+        if (sharedPreferences.getBoolean("flagSeventeenButtonColor", true)) {
+            flagSeventeenButtonColor = sharedPreferences.getBoolean("flagSeventeenButtonColor", false)
+            flagSeventeenButton.background.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP)
+        }
+        if (!flagSeventeenButtonColor) {
+            flagSeventeenButton.background.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP)
+        }
     }
 
     private fun initEncryptedSharedPreferences() {
@@ -297,6 +325,12 @@ class FlagsOverview : AppCompatActivity() {
 
         @kotlin.jvm.JvmField
         var flagFifteenButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagSixteenButtonColor = false
+
+        @kotlin.jvm.JvmField
+        var flagSeventeenButtonColor = false
     }
 
 }

@@ -187,7 +187,25 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="goToFlagFifteenActivity"
-                android:text="@string/flag_15_assembly" />
+                android:text="@string/flag_fifteen_assembly" />
+
+            <Button
+                android:id="@+id/button33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="goToFlagSixteenActivity"
+                android:text="@string/flag_sixteen_csp_bypass" />
+
+            <Button
+                android:id="@+id/button44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="goToFlagSeventeenActivity"
+                android:text="@string/flag_seventeen_ssl_pinning_bypass" />
 
             <Button
                 android:id="@+id/button11"

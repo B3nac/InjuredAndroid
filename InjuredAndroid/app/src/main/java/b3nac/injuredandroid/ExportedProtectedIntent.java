@@ -44,5 +44,6 @@ public class ExportedProtectedIntent extends AppCompatActivity {
             startActivity(unprotectedIntent);
         }
     }
-
 }
+
+
