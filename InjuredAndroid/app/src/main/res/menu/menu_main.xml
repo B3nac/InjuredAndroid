@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="b3nac.injuredandroid.MainActivity">
     <item
+        android:id="@+id/action_home"
+        android:icon="@mipmap/ic_launcher_foreground"
+        android:title="fav"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

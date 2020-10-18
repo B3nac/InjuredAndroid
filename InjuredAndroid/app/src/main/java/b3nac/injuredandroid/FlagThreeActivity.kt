@@ -11,7 +11,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class FlagThreeActivity : AppCompatActivity() {
+
     var click = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flag_three)
@@ -36,7 +38,7 @@ class FlagThreeActivity : AppCompatActivity() {
     fun submitFlag(view: View?) {
         val editText2 = findViewById<EditText>(R.id.editText2)
         val post = editText2.text.toString()
-        val settings = getSharedPreferences("b3nac.injuredandroid", Context.MODE_PRIVATE)
+
         if (post == getString(R.string.cmVzb3VyY2VzX3lv)) {
             val intent = Intent(this, FlagOneSuccess::class.java)
             FlagsOverview().flagThreeButtonColor = true

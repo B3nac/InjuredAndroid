@@ -1,8 +1,6 @@
 package b3nac.injuredandroid
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
@@ -19,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.nio.charset.StandardCharsets
 import java.util.*
-
 
 class FlagTenUnicodeActivity : AppCompatActivity() {
     internal var click = 0
@@ -44,7 +41,6 @@ class FlagTenUnicodeActivity : AppCompatActivity() {
             if (click == 0) {
                 Snackbar.make(view, "Find the email address.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
-                //Figure out how to login anonymously on click
                 click++
             } else if (click == 1) {
                 Snackbar.make(view, "Cause a unicode collision.", Snackbar.LENGTH_LONG)

@@ -44,19 +44,24 @@ class FlagSevenSqliteActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { view: View? ->
-            if (click == 0) {
-                Snackbar.make(view!!, "Run ADB as root.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()
-                click++
-            } else if (click == 1) {
-                Snackbar.make(view!!, "Stay on this activity.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()
-                click = 0
-            } else if (click == 2) {
-                Snackbar.make(view!!, "Not all encodings are the same, some need to be rotated.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()
+            when (click) {
+                0 -> {
+                    Snackbar.make(view!!, "Run ADB as root.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show()
+                    click++
+                }
+                1 -> {
+                    Snackbar.make(view!!, "Stay on this activity.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show()
+                    click = 0
+                }
+                2 -> {
+                    Snackbar.make(view!!, "Not all encodings are the same, some need to be rotated.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show()
+                }
             }
         }
+
         val db = dbHelper.writableDatabase
         val values = ContentValues()
         val decode = Base64.decode("VGhlIGZsYWcgaGFzaCE=", 0)
@@ -95,7 +100,6 @@ class FlagSevenSqliteActivity : AppCompatActivity() {
     private fun preloadValues() {
         mListener = childRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                //val childRefTwo = database.child(refDirectoryTwo)
                 val value = dataSnapshot.value as String?
                 val secure = SecureSharedPrefs()
                 secure.putString(applicationContext, "flagSevenEncrypted", value)

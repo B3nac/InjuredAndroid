@@ -8,8 +8,9 @@ import android.widget.Toast
 
 class FlagFiveReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        SecureSharedPrefs.setContext(context)
 
-        if (wtf == 0) {
+        if (click == 0) {
             val sb = StringBuilder()
             sb.append("""
     Action: ${intent.action}
@@ -22,16 +23,17 @@ class FlagFiveReceiver : BroadcastReceiver() {
             val log = sb.toString()
             Log.d("DUDE!:", log)
             Toast.makeText(context, log, Toast.LENGTH_LONG).show()
-            wtf = wtf + 1
-        } else if (wtf == 1) {
+            click++
+        } else if (click == 1) {
             val win = "Keep trying!"
             Toast.makeText(context, win, Toast.LENGTH_LONG).show()
-            wtf = wtf + 1
-        } else if (wtf == 2) {
+            click++
+        } else if (click == 2) {
             val win = "You are a winner " + VGV4dEVuY3J5cHRpb25Ud28.decrypt("Zkdlt0WwtLQ=")
             FlagsOverview().flagFiveButtonColor = true
             SecureSharedPrefs().editBoolean(context, "flagFiveButtonColor", true)
             Toast.makeText(context, win, Toast.LENGTH_LONG).show()
+            click = 0
         } else {
             val win = "Keep trying!"
             Toast.makeText(context, win, Toast.LENGTH_LONG).show()
@@ -39,7 +41,7 @@ class FlagFiveReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        var wtf = 0
+        var click = 0
         const val ACTION_CUSTOM_BROADCAST = "com.b3nac.injuredandroid.intent.action.CUSTOM_INTENT"
     }
 }

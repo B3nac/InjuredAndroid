@@ -20,7 +20,7 @@ public class TestBroadcastReceiver extends AppCompatActivity {
 
 public void send() {
 
-    String uri = "blah";
+    String uri = "Hi";
 
     Intent intent = new Intent(getApplicationContext(), FlagFiveReceiver.class);
     intent.setAction("com.b3nac.injuredandroid.intent.action.CUSTOM_INTENT");

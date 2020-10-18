@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import b3nac.injuredandroid.FlagNineFirebaseActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
@@ -19,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import java.nio.charset.StandardCharsets
 
 class FlagNineFirebaseActivity : AppCompatActivity() {
+
     var click = 0
     val directory = "ZmxhZ3Mv"
     var decodedDirectory = Base64.decode(directory, Base64.DEFAULT)

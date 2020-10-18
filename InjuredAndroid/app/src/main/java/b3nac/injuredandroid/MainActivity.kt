@@ -127,6 +127,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
+        if (itemId == R.id.action_home) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         if (itemId == R.id.action_contact) {
             startActivity(Intent(this, ContactActivity::class.java))
         }
