@@ -12,7 +12,7 @@ Depends on all your plugins, and provides a function to register them.
   s.homepage         = 'https://flutter.dev'
   s.license          = { :type => 'BSD' }
   s.author           = { 'Flutter Dev Team' => 'flutter-dev@googlegroups.com' }
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.source_files =  "Classes", "Classes/**/*.{h,m}"
   s.source           = { :path => '.' }
   s.public_header_files = './Classes/**/*.h'

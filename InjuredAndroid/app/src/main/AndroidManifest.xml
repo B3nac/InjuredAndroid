@@ -10,9 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FlagEighteenActivity"
+            android:exported="true"
+            android:label="@string/title_activity_flag_eighteen"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="b3nac.injuredandroid.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
             android:name=".FlagSeventeenActivity"
             android:label="@string/title_activity_flag_seventeen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CSPBypassActivity"
             android:label="@string/title_activity_c_s_p_bypass"
@@ -160,5 +176,4 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ContactActivity" />
     </application>
-
 </manifest>

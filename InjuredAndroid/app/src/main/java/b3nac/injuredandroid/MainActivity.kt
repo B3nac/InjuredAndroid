@@ -116,6 +116,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, FlagSeventeenActivity::class.java))
     }
 
+    fun goToFlagEighteenActivity(@Suppress("UNUSED_PARAMETER")view: View?) {
+        startActivity(Intent(this, FlagEighteenActivity::class.java))
+    }
+
     fun goToFlagFlagsOverview(@Suppress("UNUSED_PARAMETER")view: View?) {
         startActivity(Intent(this, FlagsOverview::class.java))
     }

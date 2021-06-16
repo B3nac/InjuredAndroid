@@ -86,4 +86,13 @@
     <string name="flag_sixteen_csp_bypass">Flag Sixteen - CSP Bypass</string>
     <string name="flag_seventeen_ssl_pinning_bypass">Flag Seventeen - SSL Pinning Bypass</string>
     <string name="flag_17">Flag 17</string>
+    <string name="title_activity_flag_eighteen">FlagEighteenActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="flag_eighteen_file_provider">Flag Eighteen - File Provider</string>
+    <string name="flag_18">Flag 18</string>
 </resources>
