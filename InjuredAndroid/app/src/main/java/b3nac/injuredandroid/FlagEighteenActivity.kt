@@ -54,7 +54,7 @@ class FlagEighteenActivity : AppCompatActivity() {
     }
 
     fun submitFlag(view: View?) {
-
+        // MD5
         val editText = findViewById<EditText>(R.id.enterFlag)
         val post = editText.text.toString()
         childRef.addListenerForSingleValueEvent(object : ValueEventListener {
