@@ -74,7 +74,7 @@ class _MyAppState extends State<FlutterSSLBypass> {
     // make GET request
     String url = 'http://b3nac.com/Epic_Awesomeness';
     Response response = await get(url);
-    // sample info available in response
+ 
     int statusCode = response.statusCode;
     Map<String, String> headers = response.headers;
     String contentType = headers['content-type'];

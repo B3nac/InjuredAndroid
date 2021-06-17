@@ -445,3 +445,187 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+### Flag 16 - [Nice_Work]
+
+This flag is about bypassing deep link schemes, once you bypass the deep link scheme check the flag will be in the WebView response. We will review `AndroidManifest.xml` and the source code for the activity.
+
+Reviewing `AndroidManifest.xml` we see that the accepted schemes are http and https and a accepted host of `b3nac.com`. The tricky part here is that there also needs to be a path value after the host name. The path value can be anything since it's declared as `android:pathPattern="/.*/"`.
+
+```xml
+<activity
+            android:name=".CSPBypassActivity"
+            android:label="@string/title_activity_c_s_p_bypass"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="b3nac.com"
+                    android:pathPattern="/.*/"
+                    android:scheme="http" />
+                <data
+                    android:host="b3nac.com"
+                    android:pathPattern="/.*/"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+```
+
+Looking at the source code of `CSPBypassActivity` we can review the validation.
+
+```kotlin
+        val intentToUri = intent
+        val data = intentToUri.data
+        val validScheme = "http" == data?.scheme || "https" == data?.scheme
+
+        if (validScheme) {
+
+            if (data?.scheme == "http") {
+                httpToHttps()
+            }
+            if (data?.scheme == "https") {
+                goToUrl(intent.data?.toString())
+            }
+        }
+```
+
+1. Lets review `val validScheme = "http" == data?.scheme || "https" == data?.scheme`
+
+This means the deep link scheme can be http or https.
+
+2. Now we can review the http if statement.
+
+```
+if (data?.scheme == "http") {
+                httpToHttps()
+            }
+```
+
+3. We should now checkout the httpToHttps() method.
+
+```kotlin
+private fun httpToHttps() {
+
+        val convertToHTTPS = "https://"
+        val newSuperSecureURL = convertToHTTPS + intent.data?.host + intent.data?.path
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(newSuperSecureURL)
+        sendRequest()
+        startActivity(intent)
+    }
+
+```
+
+So we now know that http deep links get converted to https and this method starts the `sendRequest()` method.
+
+4. Reviewing `sendRequest()`
+
+```kotlin
+private fun sendRequest() {
+        val editText = findViewById<EditText>(R.id.editText10)
+        val button = findViewById<Button>(R.id.button42)
+        editText.visibility = View.VISIBLE
+        button.visibility = View.VISIBLE
+        val queue = Volley.newRequestQueue(this)
+
+        val url = VGV4dEVuY3J5cHRpb25Ud28.decryptAnotherKey("kOC6ZrdMXEnfIKWihcBNLTWIhDiINUfSQyYrFsTpEBGZy1KmfPMTwtba8CXa/WVAVoJ1ACvJMd8f/MF97/7UaeNCQvC9OD4lZ/vQN6LmpBU=")
+        val urlTwo = VGV4dEVuY3J5cHRpb25Ud28.decrypt(url)
+
+        val stringRequest = StringRequest(Request.Method.GET, urlTwo,
+                { response ->
+                    // Display the first 500 characters of the response string.
+                    textView7.text = "Response is: ${response.substring(0, 500)}"
+                },
+                { textView7.text = "Try another url! :D" })
+
+        queue.add(stringRequest)
+    }
+```
+
+The two interesting variables in this method are url and urlTwo.
+
+```kotlin
+val url = VGV4dEVuY3J5cHRpb25Ud28.decryptAnotherKey("kOC6ZrdMXEnfIKWihcBNLTWIhDiINUfSQyYrFsTpEBGZy1KmfPMTwtba8CXa/WVAVoJ1ACvJMd8f/MF97/7UaeNCQvC9OD4lZ/vQN6LmpBU=")
+val urlTwo = VGV4dEVuY3J5cHRpb25Ud28.decrypt(url)
+
+```
+
+The variable `url` has the endpoint where the flag is located and the variable `urlTwo` decrypts the enpoint. So there are two ways to solve this flag, either bypassing the deep link scheme logic or hooking the decryption function and viewing the source of that endpoint. :)
+
+The following http deep link will solve the challenge.
+
+```html
+<html>
+<a href="https://b3nac.com/anything/">Should get blocked</a>
+<a href="http://b3nac.com/anything/">CSP Bypass</a>
+</html>
+```
+
+Submit the value `[Nice_Work]` and you will be congratulated for solving the flag! :D
+
+### Flag 17 - Epic_Awesomeness
+
+This flag uses a Flutter module embedded in a native application. After bypassing ssl pinning from the Flutter plugin the flag can be intercepted via Burp. To learn how to setup MITM from your device to Burp checkout my video here [How to intercept traffic from Android apps with Objection and Burp](https://www.youtube.com/watch?v=Ft3H-3J67UE).
+
+1. All the Flutter based exercises are located by navigating to `Flag Fourteen - Flutter XSS`
+
+2. Once you navigate to `Flutter SSL Bypass` then proceed with the walk-through of this exercise.
+
+3. Use the following javascript with frida to bypass the Flutter ssl plugin.
+
+```javascript
+function disablePinning()
+{
+    var SslPinningPlugin = Java.use("com.macif.plugin.sslpinningplugin.SslPinningPlugin");
+    SslPinningPlugin.checkConnexion.implementation = function()
+    {
+        console.log("Disabled SslPinningPlugin");
+        return true;
+    }
+}
+
+Java.perform(disablePinning)
+```
+
+The frida command to use in order to hook the method that is used by the Flutter module.
+
+`frida -U -f b3nac.injuredandroid -l flutter-plugin-ssl.js --no-pause`
+
+
+After Flutter ssl pinning plugin is bypassed the response endpoint will show the flag. :)
+
+```dart
+ _makeGetRequest() async {
+    // make GET request
+    String url = 'http://b3nac.com/Epic_Awesomeness';
+    Response response = await get(url);
+
+    int statusCode = response.statusCode;
+    Map<String, String> headers = response.headers;
+    String contentType = headers['content-type'];
+    String json = response.body;
+
+    // Await the http get response, then decode the json-formatted response.
+
+    if (response.statusCode == 200 || response.statusCode == 302 || response.statusCode == 404 || response.statusCode == 500)  {
+      var responseBody = response.body;
+      print('Number of items: $responseBody.');
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
+  }
+
+```
+
+### Flag 18 - 
+
+Coming soon to a theatre near you!
+
+---
+
+There's a video walk-through of all the exercises except Flag 18 here [Android Mobile Hacking Workshop](https://www.youtube.com/watch?v=PMKnPaGWxtg).
