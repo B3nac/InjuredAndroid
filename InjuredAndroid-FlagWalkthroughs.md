@@ -446,6 +446,8 @@ if __name__ == '__main__':
     main()
 ```
 
+---
+
 ### Flag 16 - [Nice_Work]
 
 This flag is about bypassing deep link schemes, once you bypass the deep link scheme check the flag will be in the WebView response. We will review `AndroidManifest.xml` and the source code for the activity.
@@ -568,6 +570,8 @@ The following http deep link will solve the challenge.
 
 Submit the value `[Nice_Work]` and you will be congratulated for solving the flag! :D
 
+---
+
 ### Flag 17 - Epic_Awesomeness
 
 This flag uses a Flutter module embedded in a native application. After bypassing ssl pinning from the Flutter plugin the flag can be intercepted via Burp. To learn how to setup MITM from your device to Burp checkout my video here [How to intercept traffic from Android apps with Objection and Burp](https://www.youtube.com/watch?v=Ft3H-3J67UE).
@@ -621,6 +625,8 @@ After Flutter ssl pinning plugin is bypassed the response endpoint will show the
   }
 
 ```
+
+---
 
 ### Flag 18 - 
 
