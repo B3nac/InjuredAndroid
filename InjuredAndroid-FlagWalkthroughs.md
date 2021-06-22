@@ -628,7 +628,7 @@ After Flutter ssl pinning plugin is bypassed the response endpoint will show the
 
 ---
 
-### Flag 18 - 
+### Flag 18 - 034d361a5942e67697d17534f37ed5a9
 
 #### Recon
 
@@ -669,12 +669,15 @@ The specification of `files-path` equals `/data/data/b3nac.injuredandroid/files`
 
 The Deep link ACE activity or flag 13 will move the test file needed to complete this challenge. Using any of these deep links should work.
 
+
+```html
 <html>
 <p><a href="flag13://rce?binary=narnia.x86_64&param=testOne">Test one!</p>
 <p><a href="flag13://rce?binary=narnia.x86_64&param=testTwo">Test two!</p>
 <p><a href="flag13://rce?binary=narnia.x86_64&param=testThree">Test three!</p>
 <p><a href="flag13://rce?combined=Treasure_Planet">OH SNAP!</p>
 </html> 
+```
 
 The logic moving the files.
 
