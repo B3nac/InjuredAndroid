@@ -16,8 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 class FlagsOverview : AppCompatActivity() {
 
     private val preferencesName = "b3nac.injuredandroid.encrypted"
-
-    // Step 0: EncryptedSharedPreferences take long to initialize/open, therefor it's better to do it only once and keep an instance
+    
     lateinit var sharedPreferences: SharedPreferences
 
     var flagOneButtonColor = false

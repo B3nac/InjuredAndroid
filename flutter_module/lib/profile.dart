@@ -328,7 +328,7 @@ class MapScreenState extends State<ProfilePage>
 
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    //Return String
+    // Return String
     String stringValue = prefs.getString('username');
     return stringValue;
   }

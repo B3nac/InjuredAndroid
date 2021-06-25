@@ -16,7 +16,6 @@ class _MyHomePageState extends State<MyHomePage> {
   String url = "https://b3nac.com";
 
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
-// here we checked the url state if it loaded or start Load or abort Load
 
   @override
   void initState() {
@@ -109,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
 
-          ],// make the icons colors inside appbar with white color
+          ],
 
         ),
         initialChild: Container( // but if you want to add your own waiting widget just add InitialChild
